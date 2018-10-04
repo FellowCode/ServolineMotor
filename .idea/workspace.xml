@@ -2,351 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7a8f2b9-fe4d-48c0-b5a8-b876878b1525" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/INSTALLER" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/INSTALLER" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/METADATA" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/METADATA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/dependency_links.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/dependency_links.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/top_level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Kivy-1.10.1.dist-info/top_level.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/_clock.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/_clock.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/_event.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/_event.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/adapter.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/adapter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/args_converters.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/args_converters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/dictadapter.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/dictadapter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/listadapter.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/listadapter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/simplelistadapter.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/adapters/simplelistadapter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/animation.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/animation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/atlas.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/atlas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/cache.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/clock.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/clock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/compat.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/compat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_avplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_avplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_ffpyplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_ffpyplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_gstplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_gstplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_pygame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/audio/audio_pygame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_android.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_android.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_gi.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_gi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_opencv.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_opencv.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_picamera.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/camera/camera_picamera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/_clipboard_ext.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/_clipboard_ext.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_android.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_android.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_dbusklipper.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_dbusklipper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_dummy.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_dummy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_gtk3.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_gtk3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_nspaste.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_nspaste.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_pygame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_pygame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_sdl2.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_sdl2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_winctypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_winctypes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_xclip.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_xclip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_xsel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/clipboard/clipboard_xsel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/gl/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/gl/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_dds.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_dds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_ffpyplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_ffpyplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_gif.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_gif.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_pil.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_pil.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_pygame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_pygame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_sdl2.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_sdl2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_tex.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/image/img_tex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/spelling/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/spelling/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/spelling/spelling_enchant.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/spelling/spelling_enchant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/spelling/spelling_osxappkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/spelling/spelling_osxappkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/markup.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/markup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_layout.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_layout.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_pil.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_pil.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_pygame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_pygame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_sdl2.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/text/text_sdl2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_ffmpeg.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_ffmpeg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_ffpyplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_ffpyplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_gstplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_gstplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_null.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/video/video_null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_attrs.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_attrs.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_egl_rpi.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_egl_rpi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_info.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_info.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_pygame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_pygame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_sdl2.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/core/window/window_sdl2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/default.fs" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/default.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/default.vs" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/default.vs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/header.fs" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/header.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/header.vs" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/glsl/header.vs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/azerty.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/azerty.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/de.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/de.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/de_CH.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/de_CH.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/en_US.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/en_US.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/fr_CH.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/fr_CH.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/qwerty.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/qwerty.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/qwertz.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/keyboards/qwertz.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/settings_kivy.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/settings_kivy.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/style.kv" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/data/style.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/deps/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/deps/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/dampedscroll.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/dampedscroll.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/kinetic.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/kinetic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/opacityscroll.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/opacityscroll.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/scroll.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/effects/scroll.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/extras/highlight.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/extras/highlight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/factory_registers.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/factory_registers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/garden/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/garden/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/geometry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/gesture.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/gesture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/buffer.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/buffer.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/cgl.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/cgl.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/common.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/common.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/compiler.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/compiler.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/context.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/context.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/context_instructions.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/context_instructions.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/fbo.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/fbo.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/gl_debug_logger.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/gl_debug_logger.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/img_tools.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/img_tools.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/instructions.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/instructions.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/memory.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/memory.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/opcodes.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/opcodes.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/opengl_utils.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/opengl_utils.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/opengl_utils_def.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/opengl_utils_def.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/shader.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/shader.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/stencil_instructions.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/stencil_instructions.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/svg.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/svg.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/tesselator.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/tesselator.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/texture.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/texture.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/transformation.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/transformation.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vbo.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vbo.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vertex.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vertex.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vertex_instructions.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vertex_instructions.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vertex_instructions_line.pxi" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/graphics/vertex_instructions_line.pxi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/common_subset.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/common_subset.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/gl2platform.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/gl2platform.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/gl_redirect.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/gl_redirect.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/khrplatform.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/include/khrplatform.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/motionevent.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/motionevent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/calibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/calibration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/dejitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/dejitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/doubletap.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/doubletap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/ignorelist.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/ignorelist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/retaintouch.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/retaintouch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/tripletap.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/postproc/tripletap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/provider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/androidjoystick.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/androidjoystick.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/hidinput.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/hidinput.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/leapfinger.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/leapfinger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/linuxwacom.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/linuxwacom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/mactouch.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/mactouch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/mouse.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/mouse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/mtdev.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/mtdev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/probesysfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/probesysfs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/tuio.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/tuio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/wm_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/wm_common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/wm_pen.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/wm_pen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/wm_touch.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/providers/wm_touch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/recorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/recorder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/shape.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/input/shape.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/interactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/interactive.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lang/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lang/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lang/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lang/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lang/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lang/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/ddsfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/ddsfile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/gstplayer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/gstplayer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/mtdev.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/mtdev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/osc/OSC.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/osc/OSC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/osc/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/osc/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/osc/oscAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/osc/oscAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/vidcore_lite/bcm.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/lib/vidcore_lite/bcm.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/metrics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/_webdebugger.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/_webdebugger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/console.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/console.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/cursor.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/cursor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/inspector.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/inspector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/joycursor.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/joycursor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/keybinding.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/keybinding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/monitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/monitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/recorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/recorder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/touchring.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/touchring.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/webdebugger.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/modules/webdebugger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/multistroke.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/multistroke.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/network/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/network/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/network/urlrequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/network/urlrequest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/properties.pxd" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/properties.pxd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/dictstore.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/dictstore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/jsonstore.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/jsonstore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/redisstore.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/storage/redisstore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/support.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/perf_test_textinput.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/perf_test_textinput.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_adapters.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_adapters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_animations.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_animations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_audio.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_audio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_clipboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_clipboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_clock.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_clock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_doc_gallery.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_doc_gallery.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_fbo_py2py3.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_fbo_py2py3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_filechooser.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_filechooser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_filechooser_unicode.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_filechooser_unicode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_fonts.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_fonts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_graphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_graphics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_invalid_lang.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_invalid_lang.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_1084.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_1084.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_1091.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_1091.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_599.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_599.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_609.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_609.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_883.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_issue_883.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_knspace.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_knspace.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_lang.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_lang.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_lang_complex.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_lang_complex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_module_inspector.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_module_inspector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_mouse_multitouchsim.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_mouse_multitouchsim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_multistroke.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_multistroke.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_properties.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_rst_replace.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_rst_replace.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_selection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_storage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_actionbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_actionbar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_anchorlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_anchorlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_asyncimage.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_asyncimage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_boxlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_boxlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_gridlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_gridlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_listview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_listview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_relativelayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_relativelayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_scrollview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_scrollview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_slider.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_slider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_stacklayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_stacklayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_textinput.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_textinput.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_widget.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_uix_widget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_urlrequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_urlrequest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_vector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_video.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_widget.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_widget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_widget_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_widget_walk.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_window_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/test_window_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/testkv.kv" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/testkv.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/visual_test_label.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tests/visual_test_label.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/benchmark.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/generate-icons.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/generate-icons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/gles_compat/gl2.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/gles_compat/gl2.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/gles_compat/subset_gles.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/gles_compat/subset_gles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy-mode.el" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy-mode.el" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy.json-tmlanguage" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy.json-tmlanguage" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy.tmLanguage" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy.tmLanguage" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy.vim" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/highlight/kivy.vim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/kviewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/kviewer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/hook-kivy.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/hook-kivy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/pyi_rth_kivy.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/packaging/pyinstaller_hooks/pyi_rth_kivy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/pep8checker/pep8.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/pep8checker/pep8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/pep8checker/pep8kivy.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/pep8checker/pep8kivy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/pep8checker/pre-commit.githook" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/pep8checker/pre-commit.githook" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/stub-gl-debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/stub-gl-debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/texturecompress.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/tools/texturecompress.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/abstractview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/abstractview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/accordion.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/accordion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/actionbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/actionbar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/anchorlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/anchorlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/button.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/button.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/codenavigation.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/codenavigation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/compoundselection.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/compoundselection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/cover.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/cover.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/drag.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/drag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/emacs.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/emacs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/focus.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/focus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/knspace.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/knspace.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/togglebutton.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/togglebutton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/touchripple.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/behaviors/touchripple.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/boxlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/boxlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/bubble.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/bubble.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/button.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/button.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/carousel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/carousel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/checkbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/checkbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/codeinput.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/codeinput.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/colorpicker.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/colorpicker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/dropdown.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/dropdown.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/effectwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/effectwidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/filechooser.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/filechooser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/floatlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/floatlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/gesturesurface.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/gesturesurface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/gridlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/gridlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/image.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/label.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/label.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/listview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/listview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/modalview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/modalview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/pagelayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/pagelayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/popup.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/popup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/progressbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/progressbar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleboxlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleboxlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recyclegridlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recyclegridlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recyclelayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recyclelayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/datamodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/datamodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/layout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/layout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/recycleview/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/relativelayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/relativelayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/rst.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/rst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/sandbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/sandbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/scatter.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/scatter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/scatterlayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/scatterlayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/screenmanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/screenmanager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/scrollview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/scrollview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/selectableview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/selectableview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/slider.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/slider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/spinner.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/spinner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/splitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/splitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/stacklayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/stacklayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/stencilview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/stencilview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/switch.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/switch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/tabbedpanel.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/tabbedpanel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/textinput.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/textinput.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/togglebutton.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/togglebutton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/treeview.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/treeview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/video.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/videoplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/videoplayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/vkeyboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/vkeyboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/widget.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/uix/widget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/vector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/weakmethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kivy/weakmethod.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -356,14 +12,14 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/python$modbus.coverage" NAME="modbus Coverage Results" MODIFIED="1538635429788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ServolineMotor$main.coverage" NAME="main Coverage Results" MODIFIED="1538650698938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ServolineMotor$main.coverage" NAME="main Coverage Results" MODIFIED="1538661173802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python$main.coverage" NAME="main Coverage Results" MODIFIED="1538638907396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1825525916">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="2" />
@@ -371,24 +27,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2254" />
+          <entry key="py" value="2988" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2254" />
+          <entry key="Python" value="2988" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="1" />
+          <entry key="Python" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="1" />
+          <entry key="py" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -419,12 +75,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+            <state relative-caret-position="164">
+              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1538650687359" expanded="true" signature="742:747" ph="..." />
-                <marker date="1538650687359" expanded="true" signature="1097:1360" ph="..." />
+                <marker date="1538662245547" expanded="true" signature="744:749" ph="..." />
+                <marker date="1538662245547" expanded="true" signature="1360:1362" ph="..." />
+                <marker date="1538662245547" expanded="true" signature="1362:1364" ph="..." />
+                <marker date="1538662245547" expanded="true" signature="1442:1526" ph="..." />
               </folding>
             </state>
           </provider>
@@ -457,6 +115,7 @@
         <option value="$PROJECT_DIR$/Serialize.cs" />
         <option value="$PROJECT_DIR$/commands.py" />
         <option value="$PROJECT_DIR$/modbus.py" />
+        <option value="$PROJECT_DIR$/design.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -467,11 +126,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -483,12 +145,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="python" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="ServolineMotor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ServolineMotor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -584,14 +242,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23027718" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3275488" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -599,7 +256,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -648,14 +305,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/design.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+        <state relative-caret-position="164">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1538650687359" expanded="true" signature="742:747" ph="..." />
-            <marker date="1538650687359" expanded="true" signature="1097:1360" ph="..." />
+            <marker date="1538662245547" expanded="true" signature="744:749" ph="..." />
+            <marker date="1538662245547" expanded="true" signature="1360:1362" ph="..." />
+            <marker date="1538662245547" expanded="true" signature="1362:1364" ph="..." />
+            <marker date="1538662245547" expanded="true" signature="1442:1526" ph="..." />
           </folding>
         </state>
       </provider>
