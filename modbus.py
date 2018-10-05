@@ -2,57 +2,63 @@ import serial
 from commands import *
 import time
 
-ser = serial.Serial('COM6', 9600, timeout=1, parity=serial.PARITY_ODD)
-print(ser)
+class Modbus:
+    is_connect = False
+    def connect(self, com_num):
+        try:
+            self.ser = serial.Serial('COM' + str(com_num), 9600, timeout=1, parity=serial.PARITY_ODD)
+            self.is_connect = True
+        except:
+            self.is_connect = False
 
-#ser.write(':010307120001E2\r\n'.encode('utf-8'))
-ser.write(speed_command(50).encode('utf-8'))
-print('send', speed_command(50))
-print(repr(ser.read(1000)))
+    def send_command(self, cm, right_ans):
+        self.ser.write(cm.encode('utf-8'))
+        ans = self.ser.read(1000).decode('utf-8')
+        if ans is right_ans:
+            return True
+        else:
+            return False
 
-#:0106012F0BB806
-#
-#ser.write(start_acceleration_command(3050).encode('utf-8'))
-#print('send', start_acceleration_command(3050))
-#print(repr(ser.read(1000)))
+    def set_speed(self, value):
+        cm = speed_command(value)
+        return self.send_command(cm, cm)
 
-#:010601300BB805
-#
-#ser.write(stop_acceleration_command(3050).encode('utf-8'))
-#print('send', stop_acceleration_command(3050))
-#print(repr(ser.read(1000)))
+    def set_acceleration_time(self, value):
+        cm = start_acceleration_command(value)
+        return self.send_command(cm, cm)
 
-ser.write(JOG_on_command().encode('utf-8'))
-print('send', 'JOG On')
-print(repr(ser.read(1000)))
+    def set_decceleration_time(self, value):
+        cm = stop_acceleration_command(value)
+        return self.send_command(cm, cm)
 
-ser.write(servo_off_command().encode('utf-8'))
-print('send', 'Servo Off')
-print(repr(ser.read(1000)))
+    def JOG_On(self):
+        cm = JOG_on_command()
+        return self.send_command(cm, '???')
 
-time.sleep(1)
+    def JOG_Off(self):
+        cm = JOG_off_command()
+        return self.send_command(cm, '???')
 
-ser.write(servo_on_command().encode('utf-8'))
-print('send', 'Servo On')
-print(repr(ser.read(1000)))
+    def servo_on(self):
+        cm = servo_on_command()
+        return self.send_command(cm, cm)
 
-time.sleep(1)
-ser.write(servo_forward_start_command().encode('utf-8'))
-print('send', 'Start forward')
-print(repr(ser.read(1000)))
+    def servo_off(self):
+        cm = servo_off_command()
+        return self.send_command(cm, cm)
 
-time.sleep(10)
+    def servo_forward_start(self):
+        cm = servo_forward_start_command()
+        return self.send_command(cm, cm)
 
-ser.write(servo_forward_stop_command().encode('utf-8'))
-print('send', 'Stop forward')
-print(repr(ser.read(1000)))
+    def servo_forward_stop(self):
+        cm = servo_forward_stop_command()
+        return self.send_command(cm, cm)
 
-time.sleep(1)
+    def servo_reverse_start(self):
+        cm = servo_reverse_start_command()
+        return self.send_command(cm, cm)
 
-ser.write(servo_off_command().encode('utf-8'))
-print('send', 'Servo Off')
-print(repr(ser.read(1000)))
-
-ser.write(JOG_off_command().encode('utf-8'))
-print('send', 'JOG Off')
-print(repr(ser.read(1000)))
+    def servo_reverse_stop(self):
+        cm = servo_reverse_stop_command()
+        return self.send_command(cm, cm)
