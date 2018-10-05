@@ -68,8 +68,16 @@ class ServolineMotorApp(App):
     auto_mode = True
     fl_mode_manual = FloatLayout()
     fl_mode_auto = FloatLayout()
+
+    disable_buttons = False
+
     com_num = 1
     motor = Modbus()
+
+    speed = 0
+    accel_time = 0
+    deccel_time = 0
+    work_time = 0
 
     def change_mode(self, instance):
         self.auto_mode = not self.auto_mode
@@ -80,7 +88,22 @@ class ServolineMotorApp(App):
             self.fl_mode_auto.clear_widgets()
             self.build_manual_mode()
 
-    def connect(self, instance):
+    def com_changed(self, instance, value):
+        try:
+            self.com_num = int(value)
+        except:
+            instance.text = value[:-1]
+
+        if len(instance.text)>2:
+            instance.text = value[:-1]
+
+    def change_connect(self, instance):
+        if not self.motor.is_connect:
+            self.connect()
+        else:
+            self.disconnect()
+
+    def connect(self):
         self.motor.connect(self.com_num)
         if not self.motor.is_connect:
             popup = BasePopup('Error')
@@ -90,7 +113,28 @@ class ServolineMotorApp(App):
             popup.content = bl
             popup.open()
         else:
-            instance.text = 'Отключиться'
+            self.connect_button.text = 'Отключиться'
+            self.change_disable_buttons()
+
+    def disconnect(self):
+        self.motor.disconnect()
+        if not self.motor.is_connect:
+            self.connect_button.text = 'Соединиться'
+            self.change_disable_buttons()
+
+
+    def change_disable_buttons(self):
+        dis = self.disable_buttons = not self.disable_buttons
+        self.motor_switch.disabled = dis
+        self.apply_param_button.disabled = dis
+        try:
+            self.start_button.disabled = dis
+            self.stop_button.disabled = dis
+            self.mode_button1.disabled = dis
+        except:
+            self.left_button.disabled = dis
+            self.right_button.disabled = dis
+            self.mode_button2.disabled = dis
 
     def change_motor_state(self, instance, value):
         if value:
@@ -99,6 +143,18 @@ class ServolineMotorApp(App):
             success = self.motor.servo_off()
         if not success:
             self.motor_switch.active = not value
+
+    def params_changed(self, instance, value):
+        try:
+            val = int(value)
+        except:
+            instance.text = value[:-1]
+
+        if len(instance.text)>4:
+            instance.text = value[:-1]
+
+    def set_params(self, instance):
+        pass
 
     def build_auto_mode(self):
         fl_mode = FloatLayout()
@@ -118,6 +174,7 @@ class ServolineMotorApp(App):
         stop_button.text = 'Стоп'
         stop_button.size = (90, 30)
         stop_button.pos = (140, window_height - 265)
+        self.stop_button = stop_button
 
         mode_button = Button()
         mode_button.size_hint = (None, None)
@@ -125,10 +182,11 @@ class ServolineMotorApp(App):
         mode_button.size = (120, 30)
         mode_button.pos = (240, window_height - 265)
         mode_button.bind(on_press=self.change_mode)
+        self.mode_button1 = mode_button
 
         fl_mode.add_widget(self.start_button)
-        fl_mode.add_widget(stop_button)
-        fl_mode.add_widget(mode_button)
+        fl_mode.add_widget(self.stop_button)
+        fl_mode.add_widget(self.mode_button1)
 
         self.fl_mode_auto.add_widget(fl_mode)
 
@@ -150,6 +208,7 @@ class ServolineMotorApp(App):
         right_button.text = '-->'
         right_button.size = (90, 30)
         right_button.pos = (140, window_height - 265)
+        self.right_button = right_button
 
         mode_button = Button()
         mode_button.size_hint = (None, None)
@@ -157,10 +216,11 @@ class ServolineMotorApp(App):
         mode_button.size = (120, 30)
         mode_button.pos = (240, window_height - 265)
         mode_button.bind(on_press=self.change_mode)
+        self.mode_button2 = mode_button
 
         fl_mode.add_widget(self.left_button)
-        fl_mode.add_widget(right_button)
-        fl_mode.add_widget(mode_button)
+        fl_mode.add_widget(self.right_button)
+        fl_mode.add_widget(self.mode_button2)
 
         self.fl_mode_manual.add_widget(fl_mode)
 
@@ -170,6 +230,7 @@ class ServolineMotorApp(App):
         com_input = ParamInput()
         com_input.width = 30
         com_input.pos = (60, window_height-30)
+        com_input.bind(text=self.com_changed)
 
         com_label = BaseLabel('COM')
         com_label.pos = (10, window_height-30)
@@ -181,7 +242,8 @@ class ServolineMotorApp(App):
         connect_button.font_size = '12sp'
         connect_button.pos = (100, window_height-33)
         connect_button.padding = [5, 2]
-        connect_button.bind(on_press=self.connect)
+        connect_button.bind(on_press=self.change_connect)
+        self.connect_button = connect_button
 
         motor_state_label = BaseLabel('Motor')
         motor_state_label.pos = (window_width-150, window_height-30)
@@ -222,6 +284,7 @@ class ServolineMotorApp(App):
         apply_param_button.size_hint = (.8, None)
         apply_param_button.height = 30
         apply_param_button.pos = (200 - 400*.8*.5, window_height - 220)
+        self.apply_param_button = apply_param_button
 
         floatlayout.add_widget(com_input)
         floatlayout.add_widget(com_label)
@@ -237,14 +300,15 @@ class ServolineMotorApp(App):
         floatlayout.add_widget(decceleration_time_input)
         floatlayout.add_widget(work_time_input)
 
-        floatlayout.add_widget(connect_button)
-        floatlayout.add_widget(apply_param_button)
+        floatlayout.add_widget(self.connect_button)
+        floatlayout.add_widget(self.apply_param_button)
 
         self.build_auto_mode()
         floatlayout.add_widget(self.fl_mode_auto)
         floatlayout.add_widget(self.fl_mode_manual)
         # return a Button() as a root widget
 
+        self.change_disable_buttons()
 
         return floatlayout
 

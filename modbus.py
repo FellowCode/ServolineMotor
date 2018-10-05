@@ -4,11 +4,18 @@ import time
 
 class Modbus:
     is_connect = False
+
     def connect(self, com_num):
-        try:
-            self.ser = serial.Serial('COM' + str(com_num), 9600, timeout=1, parity=serial.PARITY_ODD)
-            self.is_connect = True
-        except:
+        if not self.is_connect:
+            try:
+                self.ser = serial.Serial('COM' + str(com_num), 9600, timeout=1, parity=serial.PARITY_ODD)
+                self.is_connect = True
+            except:
+                self.is_connect = False
+
+    def disconnect(self):
+        if self.is_connect:
+            self.ser.close()
             self.is_connect = False
 
     def send_command(self, cm, right_ans):
