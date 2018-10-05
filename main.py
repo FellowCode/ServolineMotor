@@ -1,15 +1,12 @@
 import kivy
 from modbus import Modbus
+from threading import Timer
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.floatlayout import FloatLayout
 
-from serial.tools import list_ports
 
-from kivy.uix.dropdown import DropDown
-from kivy.uix.widget import Widget
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
@@ -88,6 +85,7 @@ class ServolineMotorApp(App):
     accel_time = 0
     deccel_time = 0
     work_time = 0
+    reverse = False
 
     def save_params(self):
         f = open('settings.txt', 'w')
@@ -96,6 +94,7 @@ class ServolineMotorApp(App):
         f.write(str(self.accel_time)+'\n')
         f.write(str(self.deccel_time)+'\n')
         f.write(str(self.work_time)+'\n')
+        f.write(str(self.reverse)+'\n')
         f.close()
 
     def load_params(self):
@@ -106,6 +105,7 @@ class ServolineMotorApp(App):
             self.accel_time = int(f.readline())
             self.deccel_time = int(f.readline())
             self.work_time = int(f.readline())
+            self.reverse = f.readline().strip()=='True'
             f.close()
         except:
             pass
@@ -164,6 +164,7 @@ class ServolineMotorApp(App):
             self.start_button.disabled = dis
             self.stop_button.disabled = dis
             self.mode_button1.disabled = dis
+            self.reverse_switch.disabled = dis
         except:
             pass
         try:
@@ -183,7 +184,6 @@ class ServolineMotorApp(App):
     def set_params(self, instance):
         try:
             speed = int(self.speed_input.text)
-            print(speed)
             if self.speed != speed:
                 self.motor.set_speed(speed)
                 self.speed = speed
@@ -203,6 +203,10 @@ class ServolineMotorApp(App):
                 self.deccel_time = deccel_time
         except:
             pass
+        try:
+            self.work_time = int(self.work_time_input.text)
+        except:
+            pass
         self.save_params()
 
     def left_btn_state(self, instance, value):
@@ -217,6 +221,33 @@ class ServolineMotorApp(App):
         else:
             self.motor.servo_reverse_stop()
 
+    def start_servo_time_work(self, instance):
+        print(self.work_time)
+        self.motor_timer = Timer(self.work_time/1000, self.stop_servo_time_work)
+        self.motor_timer.start()
+        self.start_button.disabled = True
+        self.reverse_switch.disabled = True
+        if not self.reverse:
+            self.motor.servo_forward_start()
+        else:
+            self.motor.servo_reverse_start()
+
+    def stop_servo_time_work_btn(self, instance):
+        self.stop_servo_time_work()
+
+    def stop_servo_time_work(self):
+        self.motor_timer.cancel()
+        self.start_button.disabled = False
+        self.reverse_switch.disabled = False
+        if not self.reverse:
+            self.motor.servo_forward_stop()
+        else:
+            self.motor.servo_reverse_stop()
+
+    def change_reverse(self, instance, value):
+        self.reverse = value
+        self.save_params()
+
     def build_auto_mode(self):
         fl_mode = FloatLayout()
         fl_mode.size_hint = (1, None)
@@ -228,6 +259,7 @@ class ServolineMotorApp(App):
         start_button.text = 'Старт'
         start_button.size = (90, 30)
         start_button.pos = (40, window_height - 265)
+        start_button.bind(on_press=self.start_servo_time_work)
         self.start_button = start_button
 
         stop_button = Button()
@@ -235,6 +267,7 @@ class ServolineMotorApp(App):
         stop_button.text = 'Стоп'
         stop_button.size = (90, 30)
         stop_button.pos = (140, window_height - 265)
+        stop_button.bind(on_press=self.stop_servo_time_work_btn)
         self.stop_button = stop_button
 
         mode_button = Button()
@@ -245,9 +278,22 @@ class ServolineMotorApp(App):
         mode_button.bind(on_press=self.change_mode)
         self.mode_button1 = mode_button
 
+        reverse_label = ParamLabel('Реверс')
+        reverse_label.pos = (30, window_height - 300)
+
+        reverse_switch = Switch()
+        reverse_switch.size_hint = (None, None)
+        reverse_switch.size = (80, 40)
+        reverse_switch.pos = (210, window_height - 310)
+        reverse_switch.active = self.reverse
+        reverse_switch.bind(active=self.change_reverse)
+        self.reverse_switch = reverse_switch
+
         fl_mode.add_widget(self.start_button)
         fl_mode.add_widget(self.stop_button)
         fl_mode.add_widget(self.mode_button1)
+        fl_mode.add_widget(reverse_label)
+        fl_mode.add_widget(self.reverse_switch)
 
         self.fl_mode_auto.add_widget(fl_mode)
 
