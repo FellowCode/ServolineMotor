@@ -1,4 +1,5 @@
 import kivy
+from kivy.core.window import Window
 from modbus import Modbus
 from threading import Timer
 
@@ -15,9 +16,12 @@ from kivy.uix.popup import Popup
 
 from kivy.config import Config
 
+from kivy.graphics import Color, Rectangle
+
+
+
 window_height = 320
 window_width = 400
-
 
 
 Config.set('graphics', 'resizable', 0)
@@ -335,6 +339,10 @@ class ServolineMotorApp(App):
 
     def build(self):
         floatlayout = FloatLayout()
+        with floatlayout.canvas.before:
+            Color(0.2, 0.2, 0.2, 1)  # green; colors range from 0-1 instead of 0-255
+            self.rect = Rectangle(size=(window_width, window_height),
+                                  pos=floatlayout.pos)
 
         com_input = ParamInput()
         com_input.width = 30
