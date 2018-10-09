@@ -13,6 +13,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
 from kivy.uix.switch import Switch
 from kivy.uix.popup import Popup
+from kivy.uix.image import Image
 
 from kivy.config import Config
 
@@ -23,7 +24,7 @@ from kivy.graphics import Color, Rectangle
 window_height = 320
 window_width = 400
 
-
+Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 Config.set('graphics', 'resizable', 0)
 Config.set('graphics', 'width', window_width)
 Config.set('graphics', 'height', window_height)
@@ -38,6 +39,7 @@ class BaseLabel(Label):
         self.height = 20
         self.font_size = '14sp'
         self.text = text
+        self.color = (0.2, 0.2, 0.2, 1)
 
 class ParamLabel(BaseLabel):
     def __init__(self, text):
@@ -50,13 +52,14 @@ class ParamInput(TextInput):
     def __init__(self):
         super().__init__()
         self.size_hint = (None, None)
-        self.width = 70
+        self.width = 50
         self.height = 20
         self.font_size = '12sp'
         self.line_height = 20
         self.multiline = False
         self.padding = [6, 2]
         self.bind(text=self.params_changed)
+        self.bind(focus=self.params_focus)
 
     def params_changed(self, instance, value):
         try:
@@ -66,6 +69,18 @@ class ParamInput(TextInput):
 
         if len(instance.text)>4:
             instance.text = value[:-1]
+
+    def params_focus(self, instance, value):
+        if len(instance.text) == 0:
+            instance.text = '0'
+
+class BaseButton(Button):
+    def __init__(self, text):
+        super().__init__()
+        self.text = text
+        self.size_hint = (None, None)
+        self.color = (0.8, 0.8, 0.8, 1)
+        self.height = 30
 
 class BasePopup(Popup):
     def __init__(self, title):
@@ -258,26 +273,20 @@ class ServolineMotorApp(App):
         fl_mode.height = window_height - 255
         fl_mode.pos = (0, window_height - 255)
 
-        start_button = Button()
-        start_button.size_hint = (None, None)
-        start_button.text = 'Старт'
-        start_button.size = (90, 30)
+        start_button = BaseButton('Старт')
+        start_button.width = 90
         start_button.pos = (40, window_height - 265)
         start_button.bind(on_press=self.start_servo_time_work)
         self.start_button = start_button
 
-        stop_button = Button()
-        stop_button.size_hint = (None, None)
-        stop_button.text = 'Стоп'
-        stop_button.size = (90, 30)
+        stop_button = BaseButton('Стоп')
+        stop_button.width = 90
         stop_button.pos = (140, window_height - 265)
         stop_button.bind(on_press=self.stop_servo_time_work_btn)
         self.stop_button = stop_button
 
-        mode_button = Button()
-        mode_button.size_hint = (None, None)
-        mode_button.text = 'Ручной режим'
-        mode_button.size = (120, 30)
+        mode_button = BaseButton('Ручной режим')
+        mode_button.width = 120
         mode_button.pos = (240, window_height - 265)
         mode_button.bind(on_press=self.change_mode)
         self.mode_button1 = mode_button
@@ -307,26 +316,20 @@ class ServolineMotorApp(App):
         fl_mode.height = window_height - 255
         fl_mode.pos = (0, window_height - 255)
 
-        left_button = Button()
-        left_button.size_hint = (None, None)
-        left_button.text = '<--'
-        left_button.size = (90, 30)
+        left_button = BaseButton('<--')
+        left_button.width = 90
         left_button.pos = (40, window_height - 265)
         left_button.bind(state=self.left_btn_state)
         self.left_button = left_button
 
-        right_button = Button()
-        right_button.size_hint = (None, None)
-        right_button.text = '-->'
-        right_button.size = (90, 30)
+        right_button = BaseButton('-->')
+        right_button.width = 90
         right_button.pos = (140, window_height - 265)
         right_button.bind(state=self.right_btn_state)
         self.right_button = right_button
 
-        mode_button = Button()
-        mode_button.size_hint = (None, None)
-        mode_button.text = 'Авто режим'
-        mode_button.size = (120, 30)
+        mode_button = BaseButton('Авто режим')
+        mode_button.width = 120
         mode_button.pos = (240, window_height - 265)
         mode_button.bind(on_press=self.change_mode)
         self.mode_button2 = mode_button
@@ -340,7 +343,7 @@ class ServolineMotorApp(App):
     def build(self):
         floatlayout = FloatLayout()
         with floatlayout.canvas.before:
-            Color(0.2, 0.2, 0.2, 1)  # green; colors range from 0-1 instead of 0-255
+            Color(0.8, 0.8, 0.8, 1)  # green; colors range from 0-1 instead of 0-255
             self.rect = Rectangle(size=(window_width, window_height),
                                   pos=floatlayout.pos)
 
@@ -353,10 +356,8 @@ class ServolineMotorApp(App):
         com_label = BaseLabel('COM')
         com_label.pos = (10, window_height-30)
 
-        connect_button = Button()
-        connect_button.size_hint = (None, None)
+        connect_button = BaseButton('Соединиться')
         connect_button.size = (90, 25)
-        connect_button.text = 'Соединиться'
         connect_button.font_size = '12sp'
         connect_button.pos = (100, window_height-33)
         connect_button.padding = [5, 2]
@@ -374,40 +375,46 @@ class ServolineMotorApp(App):
         self.motor_switch = motor_switch
 
         speed_label = ParamLabel('Скорость (об/мин)')
-        speed_label.pos = (30, window_height-80)
+        speed_label.pos = (10, window_height-80)
 
         self.speed_input = ParamInput()
-        self.speed_input.pos = (210, window_height-80)
+        self.speed_input.pos = (190, window_height-80)
         self.speed_input.text = str(self.speed)
 
         acceleration_time_label = ParamLabel('Время ускорения (мс)')
-        acceleration_time_label.pos = (30, window_height-110)
+        acceleration_time_label.pos = (10, window_height-110)
 
         self.acceleration_time_input = ParamInput()
-        self.acceleration_time_input.pos = (210, window_height-110)
+        self.acceleration_time_input.pos = (190, window_height-110)
         self.acceleration_time_input.text = str(self.accel_time)
 
         decceleration_time_label = ParamLabel('Время торможения (мс)')
-        decceleration_time_label.pos = (30, window_height-140)
+        decceleration_time_label.pos = (10, window_height-140)
 
         self.decceleration_time_input = ParamInput()
-        self.decceleration_time_input.pos = (210, window_height-140)
+        self.decceleration_time_input.pos = (190, window_height-140)
         self.decceleration_time_input.text = str(self.deccel_time)
 
         work_time_label = ParamLabel('Время работы (мс)')
-        work_time_label.pos = (30, window_height-170)
+        work_time_label.pos = (10, window_height-170)
 
         self.work_time_input = ParamInput()
-        self.work_time_input.pos = (210, window_height-170)
+        self.work_time_input.pos = (190, window_height-170)
         self.work_time_input.text = str(self.work_time)
 
-        apply_param_button = Button()
-        apply_param_button.text = 'Применить параметры'
+        logo = Image()
+        logo.source = 'logo.jpg'
+        logo.size_hint = (None, None)
+        logo.size = (150, 150)
+        logo.pos = (window_width-155, window_height-188)
+
+
+        apply_param_button = BaseButton('Применить параметры')
         apply_param_button.size_hint = (.8, None)
-        apply_param_button.height = 30
         apply_param_button.pos = (200 - 400*.8*.5, window_height - 220)
         apply_param_button.bind(on_press=self.set_params)
         self.apply_param_button = apply_param_button
+
 
         floatlayout.add_widget(com_input)
         floatlayout.add_widget(com_label)
@@ -422,6 +429,8 @@ class ServolineMotorApp(App):
         floatlayout.add_widget(self.acceleration_time_input)
         floatlayout.add_widget(self.decceleration_time_input)
         floatlayout.add_widget(self.work_time_input)
+
+        floatlayout.add_widget(logo, -1)
 
         floatlayout.add_widget(self.connect_button)
         floatlayout.add_widget(self.apply_param_button)
