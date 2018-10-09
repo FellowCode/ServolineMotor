@@ -34,7 +34,101 @@ Config.set('graphics', 'width', window_width)
 Config.set('graphics', 'height', window_height)
 Config.write()
 
+class AutoMode(FloatLayout):
+    reverse = False
+    start_button = ObjectProperty()
+    stop_button = ObjectProperty()
+    mode_button = ObjectProperty()
+    reverse_switch = ObjectProperty()
+    def start_servo_time_work(self, instance):
+        self.motor_timer = Timer(self.work_time/1000, self.stop_servo_time_work)
+        self.motor_timer.start()
+        self.start_button.disabled = True
+        self.reverse_switch.disabled = True
+        if not self.reverse:
+            self.motor.servo_forward_start()
+        else:
+            self.motor.servo_reverse_start()
+
+    def stop_servo_time_work_btn(self, instance):
+        self.stop_servo_time_work()
+
+    def stop_servo_time_work(self):
+        self.motor_timer.cancel()
+        self.start_button.disabled = False
+        self.reverse_switch.disabled = False
+        if not self.reverse:
+            self.motor.servo_forward_stop()
+        else:
+            self.motor.servo_reverse_stop()
+
+    def change_reverse(self, instance, value):
+        self.reverse = value
+        self.save_params()
+
+    def disable_buttons(self, val):
+        self.start_button.disabled = val
+        self.stop_button.disabled = val
+        self.mode_button.disabled = val
+        self.reverse_switch.disabled = val
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.start_button.bind(on_press=self.start_servo_time_work)
+        self.stop_button.bind(on_press=self.stop_servo_time_work_btn)
+        self.mode_button.bind(on_press=App.root_widget.change_mode)
+        self.reverse_switch.active = self.reverse
+
+class ManualMode(FloatLayout):
+    left_button = ObjectProperty()
+    right_button = ObjectProperty()
+    mode_button = ObjectProperty()
+
+    def left_btn_state(self, instance, value):
+        if value is 'down':
+            self.motor.servo_forward_start()
+        else:
+            self.motor.servo_forward_stop()
+
+    def right_btn_state(self, instance, value):
+        if value is 'down':
+            self.motor.servo_reverse_start()
+        else:
+            self.motor.servo_reverse_stop()
+
+    def disable_buttons(self, val):
+        self.left_button.disabled = val
+        self.right_button.disabled = val
+        self.mode_button.disabled = val
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.left_button.bind(state=self.left_btn_state)
+        self.right_button.bind(state=self.right_btn_state)
+        self.mode_button.bind(on_press=App.root_widget.change_mode)
+
+class ParamInput(TextInput):
+    def params_changed(self, instance, value):
+        try:
+            int(value)
+        except:
+            instance.text = value[:-1]
+
+        if len(instance.text)>4:
+            instance.text = value[:-1]
+
+    def params_focus(self, instance, value):
+        if len(instance.text) == 0:
+            instance.text = '0'
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.bind(text=self.params_changed)
+        self.bind(focus=self.params_focus)
+
+
 class RootWidget(FloatLayout):
+
     auto_mode = True
 
     buttons_is_disable = False
@@ -125,7 +219,7 @@ class RootWidget(FloatLayout):
 
     def disable_buttons(self, val):
         self.buttons_is_disable = val
-        self.mode_widget.disable_buttons(val)
+        App.mode_widget.disable_buttons(val)
 
     def change_motor_state(self, instance, value):
         if value:
@@ -162,7 +256,8 @@ class RootWidget(FloatLayout):
             pass
         self.save_params()
 
-    def build(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         try:
             self.load_params()
         except:
@@ -178,96 +273,6 @@ class RootWidget(FloatLayout):
         self.motor_switch.disabled = True
         self.apply_param_button.bind(on_press=self.set_params)
         self.apply_param_button.disabled = True
-        self.disable_buttons(True)
-
-class AutoMode(FloatLayout):
-    reverse = False
-    start_button = ObjectProperty()
-    stop_button = ObjectProperty()
-    mode_button = ObjectProperty()
-    reverse_switch = ObjectProperty()
-    def start_servo_time_work(self, instance):
-        self.motor_timer = Timer(self.work_time/1000, self.stop_servo_time_work)
-        self.motor_timer.start()
-        self.start_button.disabled = True
-        self.reverse_switch.disabled = True
-        if not self.reverse:
-            self.motor.servo_forward_start()
-        else:
-            self.motor.servo_reverse_start()
-
-    def stop_servo_time_work_btn(self, instance):
-        self.stop_servo_time_work()
-
-    def stop_servo_time_work(self):
-        self.motor_timer.cancel()
-        self.start_button.disabled = False
-        self.reverse_switch.disabled = False
-        if not self.reverse:
-            self.motor.servo_forward_stop()
-        else:
-            self.motor.servo_reverse_stop()
-
-    def change_reverse(self, instance, value):
-        self.reverse = value
-        self.save_params()
-
-    def disable_buttons(self, val):
-        self.start_button.disabled = val
-        self.stop_button.disabled = val
-        self.mode_button1.disabled = val
-        self.reverse_switch.disabled = val
-
-    def build(self):
-        self.start_button.bind(on_press=self.start_servo_time_work)
-        self.stop_button.bind(on_press=self.stop_servo_time_work_btn)
-        self.mode_button.bind(on_press=App.root_widget.change_mode)
-        self.reverse_switch.active = self.reverse
-
-class ManualMode(FloatLayout):
-    left_button = ObjectProperty()
-    right_button = ObjectProperty()
-    mode_button = ObjectProperty()
-
-    def left_btn_state(self, instance, value):
-        if value is 'down':
-            self.motor.servo_forward_start()
-        else:
-            self.motor.servo_forward_stop()
-
-    def right_btn_state(self, instance, value):
-        if value is 'down':
-            self.motor.servo_reverse_start()
-        else:
-            self.motor.servo_reverse_stop()
-
-    def disable_buttons(self, val):
-        self.left_button.disabled = val
-        self.right_button.disabled = val
-        self.mode_button2.disabled = val
-
-    def build(self):
-        self.left_button.bind(state=self.left_btn_state)
-        self.right_button.bind(state=self.right_btn_state)
-        self.mode_button.bind(on_press=App.root_widget.change_mode)
-
-class ParamInput(TextInput):
-    def params_changed(self, instance, value):
-        try:
-            int(value)
-        except:
-            instance.text = value[:-1]
-
-        if len(instance.text)>4:
-            instance.text = value[:-1]
-
-    def params_focus(self, instance, value):
-        if len(instance.text) == 0:
-            instance.text = '0'
-
-    def build(self):
-        self.bind(text=self.params_changed)
-        self.bind(focus=self.params_focus)
 
 
 class ServolineMotorApp(App):
@@ -278,10 +283,9 @@ class ServolineMotorApp(App):
         self.mode_widget = ManualMode()
 
     def build(self):
-
-
         self.root_widget = RootWidget()
         self.mode_widget = AutoMode()
+        self.root_widget.disable_buttons(True)
         self.root_widget.add_widget(self.mode_widget)
 
         return self.root_widget
