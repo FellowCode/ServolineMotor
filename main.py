@@ -2,6 +2,7 @@ import kivy
 from kivy.core.window import Window
 from modbus import Modbus
 from threading import Timer
+from servo_reg import ServoReg
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
@@ -29,6 +30,7 @@ Config.set('graphics', 'resizable', 0)
 Config.set('graphics', 'width', window_width)
 Config.set('graphics', 'height', window_height)
 Config.write()
+
 
 
 class BaseLabel(Label):
@@ -204,21 +206,21 @@ class ServolineMotorApp(App):
         try:
             speed = int(self.speed_input.text)
             if self.speed != speed:
-                self.motor.set_speed(speed)
+                self.motor.set_param(ServoReg.SPEED, speed)
                 self.speed = speed
         except:
             pass
         try:
             accel_time = int(self.acceleration_time_input.text)
             if self.accel_time != accel_time:
-                self.motor.set_acceleration_time(accel_time)
+                self.motor.set_param(ServoReg.ACCEL_TIME, accel_time)
                 self.accel_time = accel_time
         except:
             pass
         try:
             deccel_time = int(self.decceleration_time_input.text)
             if self.deccel_time != deccel_time:
-                self.motor.set_decceleration_time(deccel_time)
+                self.motor.set_param(ServoReg.DECCEL_TIME, deccel_time)
                 self.deccel_time = deccel_time
         except:
             pass

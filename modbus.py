@@ -6,6 +6,16 @@ import time
 
 q = Queue()
 
+class Command:
+    def __init__(self, cm, right_ans, error_func):
+        self.cm = cm
+        self.right_ans = right_ans
+        self.error_func = error_func
+
+    def error(self):
+        if self.error_func:
+            self.error_func()
+
 class SendCommandThread(Thread):
     work = True
 
@@ -18,10 +28,11 @@ class SendCommandThread(Thread):
         while self.work:
             time.sleep(0.2)
             if q.not_empty:
-                cm = q.get()
-                self.ser.write(cm.encode('utf-8'))
+                command = q.get()
+                self.ser.write(command.cm.encode('utf-8'))
                 ans = self.ser.read(100).decode('utf-8')[:-2]
-                print(ans)
+                if command.right_ans != ans:
+                    command.error_func()
                 q.task_done()
 
 
@@ -51,27 +62,13 @@ class Modbus:
             self.ser.close()
             self.is_connect = False
 
-    def send_command(self, cm, right_ans):
-        q.put(cm)
-        # self.ser.write(cm.encode('utf-8'))
-        # ans = self.ser.read(100).decode('utf-8')[:-2]
-        # if ans is right_ans:
-        #     return True
-        # else:
-        #     return False
+    def send_command(self, cm, right_ans, error_func=None):
+        command = Command(cm, right_ans, error_func)
+        q.put(command)
 
-    def set_speed(self, value):
-        cm = speed_command(value)
-        print(cm)
-        return self.send_command(cm, cm)
-
-    def set_acceleration_time(self, value):
-        cm = start_acceleration_command(value)
-        return self.send_command(cm, cm)
-
-    def set_decceleration_time(self, value):
-        cm = stop_acceleration_command(value)
-        return self.send_command(cm, cm)
+    def set_param(self, register, value, error_func=None):
+        cm = set_param_command(register, value)
+        return self.send_command(cm, cm, error_func)
 
     def JOG_On(self):
         cm = JOG_on_command()

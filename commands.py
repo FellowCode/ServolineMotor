@@ -1,14 +1,19 @@
-def speed_command(value):
-    if value >= 0 and value <= 1500:
-        return ':01060132' + get_value_hex(value) + get_control_hex(198, value) + '\r\n'
-
-def start_acceleration_command(value):
-    if value >= 0 and value <= 5000:
-        return ':0106012F' + get_value_hex(value) + get_control_hex(201, value) + '\r\n'
-
-def stop_acceleration_command(value):
-    if value >= 0 and value <= 5000:
-        return ':01060130' + get_value_hex(value) + get_control_hex(200, value) + '\r\n'
+def get_LRC(message):
+    if message[0] == ':':
+        message = message[1:]
+    lrc = 0
+    while len(message)>0:
+        hexi = message[:2]
+        message = message[2:]
+        lrc += int(hexi, 16)
+        if lrc>int('ff', 16):
+            lrc -= int('ff', 16) + 1
+    lrc = hex(int('ff', 16) - lrc + 1).upper()[2:]
+    if len(lrc)==1:
+        lrc = '0' + lrc
+    elif len(lrc)==3:
+        lrc = lrc[1:]
+    return lrc
 
 def get_value_hex(value):
     value = hex(value)[2:].upper()
@@ -16,15 +21,9 @@ def get_value_hex(value):
         value = '0' + value
     return value
 
-def get_control_hex(shift, value):
-    if value < shift+1:
-        control_value = shift - value
-    else:
-        control_value = 255-((value-shift + value//256-1)%256)
-    control_value = hex(control_value).upper()[2:]
-    while len(control_value)<2:
-        control_value = '0'+control_value
-    return control_value
+def set_param_command(register, value):
+    msg = ':0106' + get_value_hex(register) + get_value_hex(value)
+    return msg + get_LRC(msg) + '\r\n'
 
 def JOG_on_command():
     return ':010301320001C8\r\n'
