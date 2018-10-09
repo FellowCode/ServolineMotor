@@ -1,5 +1,6 @@
 import kivy
 from kivy.core.window import Window
+from kivy.properties import ObjectProperty
 from modbus import Modbus
 from threading import Timer
 from servo_reg import ServoReg
@@ -31,71 +32,8 @@ Config.set('graphics', 'width', window_width)
 Config.set('graphics', 'height', window_height)
 Config.write()
 
-
-
-class BaseLabel(Label):
-    def __init__(self, text):
-        super().__init__()
-        self.size_hint = (None, None)
-        self.width = 40
-        self.height = 20
-        self.font_size = '14sp'
-        self.text = text
-        self.color = (0.2, 0.2, 0.2, 1)
-
-class ParamLabel(BaseLabel):
-    def __init__(self, text):
-        super().__init__(text)
-        self.text_size = (200, 20)
-        self.width = 120
-        self.halign = 'right'
-
-class ParamInput(TextInput):
-    def __init__(self):
-        super().__init__()
-        self.size_hint = (None, None)
-        self.width = 50
-        self.height = 20
-        self.font_size = '12sp'
-        self.line_height = 20
-        self.multiline = False
-        self.padding = [6, 2]
-        self.bind(text=self.params_changed)
-        self.bind(focus=self.params_focus)
-
-    def params_changed(self, instance, value):
-        try:
-            int(value)
-        except:
-            instance.text = value[:-1]
-
-        if len(instance.text)>4:
-            instance.text = value[:-1]
-
-    def params_focus(self, instance, value):
-        if len(instance.text) == 0:
-            instance.text = '0'
-
-class BaseButton(Button):
-    def __init__(self, text):
-        super().__init__()
-        self.text = text
-        self.size_hint = (None, None)
-        self.color = (0.8, 0.8, 0.8, 1)
-        self.height = 30
-
-class BasePopup(Popup):
-    def __init__(self, title):
-        super().__init__()
-        self.title = title
-        self.size_hint = (None, None)
-        self.size = (150, 70)
-
-
-class ServolineMotorApp(App):
+class RootWidget(FloatLayout):
     auto_mode = True
-    fl_mode_manual = FloatLayout()
-    fl_mode_auto = FloatLayout()
 
     buttons_is_disable = False
 
@@ -107,6 +45,15 @@ class ServolineMotorApp(App):
     deccel_time = 0
     work_time = 0
     reverse = False
+
+    com_input = ObjectProperty()
+    connect_button = ObjectProperty()
+    speed_input = ObjectProperty()
+    accel_time_input = ObjectProperty()
+    deccel_time_input = ObjectProperty()
+    work_time_input = ObjectProperty()
+    motor_switch = ObjectProperty()
+    apply_param_button = ObjectProperty()
 
     def save_params(self):
         f = open('settings.txt', 'w')
@@ -158,12 +105,7 @@ class ServolineMotorApp(App):
     def connect(self):
         self.motor.connect(self.com_num)
         if not self.motor.is_connect:
-            popup = BasePopup('Error')
-            bl = BoxLayout(orientation='vertical')
-            bl.add_widget(Label(text='Connection error'))
-            bl.add_widget(Button(text='Закрыть', on_press=popup.dismiss))
-            popup.content = bl
-            popup.open()
+            pass
         else:
             self.connect_button.text = 'Отключиться'
             self.motor_switch.disabled = False
@@ -180,20 +122,8 @@ class ServolineMotorApp(App):
 
 
     def disable_buttons(self, val):
-        dis = self.buttons_is_disable = val
-        try:
-            self.start_button.disabled = dis
-            self.stop_button.disabled = dis
-            self.mode_button1.disabled = dis
-            self.reverse_switch.disabled = dis
-        except:
-            pass
-        try:
-            self.left_button.disabled = dis
-            self.right_button.disabled = dis
-            self.mode_button2.disabled = dis
-        except:
-            pass
+        self.buttons_is_disable = val
+        self.mode_widget.disable_buttons(val)
 
     def change_motor_state(self, instance, value):
         if value:
@@ -211,14 +141,14 @@ class ServolineMotorApp(App):
         except:
             pass
         try:
-            accel_time = int(self.acceleration_time_input.text)
+            accel_time = int(self.accel_time_input.text)
             if self.accel_time != accel_time:
                 self.motor.set_param(ServoReg.ACCEL_TIME, accel_time)
                 self.accel_time = accel_time
         except:
             pass
         try:
-            deccel_time = int(self.decceleration_time_input.text)
+            deccel_time = int(self.deccel_time_input.text)
             if self.deccel_time != deccel_time:
                 self.motor.set_param(ServoReg.DECCEL_TIME, deccel_time)
                 self.deccel_time = deccel_time
@@ -230,20 +160,31 @@ class ServolineMotorApp(App):
             pass
         self.save_params()
 
-    def left_btn_state(self, instance, value):
-        if value is 'down':
-            self.motor.servo_forward_start()
-        else:
-            self.motor.servo_forward_stop()
+    def build(self):
+        try:
+            self.load_params()
+        except:
+            pass
+        self.com_input.text = str(self.com_num)
+        self.com_input.bind(text=self.com_changed)
+        self.connect_button.bind(on_press=self.change_connect)
+        self.speed_input.text = str(self.speed)
+        self.accel_time_input.text = str(self.accel_time)
+        self.deccel_time_input.text = str(self.deccel_time)
+        self.work_time_input.text = str(self.work_time)
+        self.motor_switch.bind(active=self.change_motor_state)
+        self.motor_switch.disabled = True
+        self.apply_param_button.bind(on_press=self.set_params)
+        self.apply_param_button.disabled = True
+        self.disable_buttons(True)
 
-    def right_btn_state(self, instance, value):
-        if value is 'down':
-            self.motor.servo_reverse_start()
-        else:
-            self.motor.servo_reverse_stop()
-
+class AutoMode(FloatLayout):
+    reverse = False
+    start_button = ObjectProperty()
+    stop_button = ObjectProperty()
+    mode_button = ObjectProperty()
+    reverse_switch = ObjectProperty()
     def start_servo_time_work(self, instance):
-        print(self.work_time)
         self.motor_timer = Timer(self.work_time/1000, self.stop_servo_time_work)
         self.motor_timer.start()
         self.start_button.disabled = True
@@ -269,190 +210,94 @@ class ServolineMotorApp(App):
         self.reverse = value
         self.save_params()
 
-    def build_auto_mode(self):
-        fl_mode = FloatLayout()
-        fl_mode.size_hint = (1, None)
-        fl_mode.height = window_height - 255
-        fl_mode.pos = (0, window_height - 255)
-
-        start_button = BaseButton('Старт')
-        start_button.width = 90
-        start_button.pos = (40, window_height - 265)
-        start_button.bind(on_press=self.start_servo_time_work)
-        self.start_button = start_button
-
-        stop_button = BaseButton('Стоп')
-        stop_button.width = 90
-        stop_button.pos = (140, window_height - 265)
-        stop_button.bind(on_press=self.stop_servo_time_work_btn)
-        self.stop_button = stop_button
-
-        mode_button = BaseButton('Ручной режим')
-        mode_button.width = 120
-        mode_button.pos = (240, window_height - 265)
-        mode_button.bind(on_press=self.change_mode)
-        self.mode_button1 = mode_button
-
-        reverse_label = ParamLabel('Реверс')
-        reverse_label.pos = (30, window_height - 300)
-
-        reverse_switch = Switch()
-        reverse_switch.size_hint = (None, None)
-        reverse_switch.size = (80, 40)
-        reverse_switch.pos = (210, window_height - 310)
-        reverse_switch.active = self.reverse
-        reverse_switch.bind(active=self.change_reverse)
-        self.reverse_switch = reverse_switch
-
-        fl_mode.add_widget(self.start_button)
-        fl_mode.add_widget(self.stop_button)
-        fl_mode.add_widget(self.mode_button1)
-        fl_mode.add_widget(reverse_label)
-        fl_mode.add_widget(self.reverse_switch)
-
-        self.fl_mode_auto.add_widget(fl_mode)
-
-    def build_manual_mode(self):
-        fl_mode = FloatLayout()
-        fl_mode.size_hint = (1, None)
-        fl_mode.height = window_height - 255
-        fl_mode.pos = (0, window_height - 255)
-
-        left_button = BaseButton('<--')
-        left_button.width = 90
-        left_button.pos = (40, window_height - 265)
-        left_button.bind(state=self.left_btn_state)
-        self.left_button = left_button
-
-        right_button = BaseButton('-->')
-        right_button.width = 90
-        right_button.pos = (140, window_height - 265)
-        right_button.bind(state=self.right_btn_state)
-        self.right_button = right_button
-
-        mode_button = BaseButton('Авто режим')
-        mode_button.width = 120
-        mode_button.pos = (240, window_height - 265)
-        mode_button.bind(on_press=self.change_mode)
-        self.mode_button2 = mode_button
-
-        fl_mode.add_widget(self.left_button)
-        fl_mode.add_widget(self.right_button)
-        fl_mode.add_widget(self.mode_button2)
-
-        self.fl_mode_manual.add_widget(fl_mode)
+    def disable_buttons(self, val):
+        self.start_button.disabled = val
+        self.stop_button.disabled = val
+        self.mode_button1.disabled = val
+        self.reverse_switch.disabled = val
 
     def build(self):
-        floatlayout = FloatLayout()
-        with floatlayout.canvas.before:
-            Color(0.8, 0.8, 0.8, 1)  # green; colors range from 0-1 instead of 0-255
-            self.rect = Rectangle(size=(window_width, window_height),
-                                  pos=floatlayout.pos)
+        self.start_button.bind(on_press=self.start_servo_time_work)
+        self.stop_button.bind(on_press=self.stop_servo_time_work_btn)
+        self.mode_button.bind(on_press=App.root_widget.change_mode)
+        self.reverse_switch.active = self.reverse
 
-        com_input = ParamInput()
-        com_input.width = 30
-        com_input.pos = (60, window_height-30)
-        com_input.bind(text=self.com_changed)
-        com_input.text = str(self.com_num)
+class ManualMode(FloatLayout):
+    left_button = ObjectProperty()
+    right_button = ObjectProperty()
+    mode_button = ObjectProperty()
 
-        com_label = BaseLabel('COM')
-        com_label.pos = (10, window_height-30)
+    def left_btn_state(self, instance, value):
+        if value is 'down':
+            self.motor.servo_forward_start()
+        else:
+            self.motor.servo_forward_stop()
 
-        connect_button = BaseButton('Соединиться')
-        connect_button.size = (90, 25)
-        connect_button.font_size = '12sp'
-        connect_button.pos = (100, window_height-33)
-        connect_button.padding = [5, 2]
-        connect_button.bind(on_press=self.change_connect)
-        self.connect_button = connect_button
+    def right_btn_state(self, instance, value):
+        if value is 'down':
+            self.motor.servo_reverse_start()
+        else:
+            self.motor.servo_reverse_stop()
 
-        motor_state_label = BaseLabel('Motor')
-        motor_state_label.pos = (window_width-150, window_height-30)
+    def disable_buttons(self, val):
+        self.left_button.disabled = val
+        self.right_button.disabled = val
+        self.mode_button2.disabled = val
 
-        motor_switch = Switch()
-        motor_switch.active = False
-        motor_switch.size_hint = (None, None)
-        motor_switch.pos = (300, window_height-70)
-        motor_switch.bind(active=self.change_motor_state)
-        self.motor_switch = motor_switch
+    def build(self):
+        self.left_button.bind(state=self.left_btn_state)
+        self.right_button.bind(state=self.right_btn_state)
+        self.mode_button.bind(on_press=App.root_widget.change_mode)
 
-        speed_label = ParamLabel('Скорость (об/мин)')
-        speed_label.pos = (10, window_height-80)
+class BaseLabel(Label):
+    pass
 
-        self.speed_input = ParamInput()
-        self.speed_input.pos = (190, window_height-80)
-        self.speed_input.text = str(self.speed)
+class ParamLabel(BaseLabel):
+    pass
 
-        acceleration_time_label = ParamLabel('Время ускорения (мс)')
-        acceleration_time_label.pos = (10, window_height-110)
+class BaseButton(Button):
+    pass
 
-        self.acceleration_time_input = ParamInput()
-        self.acceleration_time_input.pos = (190, window_height-110)
-        self.acceleration_time_input.text = str(self.accel_time)
+class ParamInput(TextInput):
+    def params_changed(self, instance, value):
+        try:
+            int(value)
+        except:
+            instance.text = value[:-1]
 
-        decceleration_time_label = ParamLabel('Время торможения (мс)')
-        decceleration_time_label.pos = (10, window_height-140)
+        if len(instance.text)>4:
+            instance.text = value[:-1]
 
-        self.decceleration_time_input = ParamInput()
-        self.decceleration_time_input.pos = (190, window_height-140)
-        self.decceleration_time_input.text = str(self.deccel_time)
+    def params_focus(self, instance, value):
+        if len(instance.text) == 0:
+            instance.text = '0'
 
-        work_time_label = ParamLabel('Время работы (мс)')
-        work_time_label.pos = (10, window_height-170)
-
-        self.work_time_input = ParamInput()
-        self.work_time_input.pos = (190, window_height-170)
-        self.work_time_input.text = str(self.work_time)
-
-        logo = Image()
-        logo.source = 'logo.jpg'
-        logo.size_hint = (None, None)
-        logo.size = (150, 150)
-        logo.pos = (window_width-155, window_height-188)
+    def build(self):
+        self.bind(text=self.params_changed)
+        self.bind(focus=self.params_focus)
 
 
-        apply_param_button = BaseButton('Применить параметры')
-        apply_param_button.size_hint = (.8, None)
-        apply_param_button.pos = (200 - 400*.8*.5, window_height - 220)
-        apply_param_button.bind(on_press=self.set_params)
-        self.apply_param_button = apply_param_button
+class ServolineMotorApp(App):
+    def build_auto_mode(self):
+        self.mode_widget = AutoMode()
+
+    def build_manual_mode(self):
+        self.mode_widget = ManualMode()
+
+    def build(self):
 
 
-        floatlayout.add_widget(com_input)
-        floatlayout.add_widget(com_label)
-        floatlayout.add_widget(motor_state_label)
-        floatlayout.add_widget(self.motor_switch)
-        floatlayout.add_widget(speed_label)
-        floatlayout.add_widget(acceleration_time_label)
-        floatlayout.add_widget(decceleration_time_label)
-        floatlayout.add_widget(work_time_label)
+        self.root_widget = RootWidget()
+        self.mode_widget = AutoMode()
+        self.root_widget.add_widget(self.mode_widget)
 
-        floatlayout.add_widget(self.speed_input)
-        floatlayout.add_widget(self.acceleration_time_input)
-        floatlayout.add_widget(self.decceleration_time_input)
-        floatlayout.add_widget(self.work_time_input)
-
-        floatlayout.add_widget(logo, -1)
-
-        floatlayout.add_widget(self.connect_button)
-        floatlayout.add_widget(self.apply_param_button)
-
-        self.build_auto_mode()
-        floatlayout.add_widget(self.fl_mode_auto)
-        floatlayout.add_widget(self.fl_mode_manual)
-        # return a Button() as a root widget
-
-        self.motor_switch.disabled=True
-        self.apply_param_button.disabled=True
-        self.disable_buttons(True)
-
-        return floatlayout
+        return self.root_widget
 
     def on_stop(self):
-        self.disconnect()
+        self.root_widget.disconnect()
 
+
+App = ServolineMotorApp()
 
 if __name__ == '__main__':
-    App = ServolineMotorApp()
-    App.load_params()
     App.run()

@@ -1,0 +1,160 @@
+#:set window_height 320
+#:set window_width 400
+
+<RootWidget>:
+    com_input: com_input
+    connect_button: connect_button
+    motor_switch: motor_switch
+    speed_input: speed_input
+    accel_time_input: accel_time_input
+    deccel_time_input: deccel_time_input
+    work_time_input: work_time_input
+    apply_param_button: apply_param_button
+    canvas:
+        Color:
+            rgb: (0.8, 0.8, 0.8, 1)
+        Rectangle:
+            size: (window_width, window_height)
+            pos: (0, 0)
+    BaseLabel:
+        pos: (10, window_height-30)
+        text: 'COM'
+    ParamInput:
+        id: com_input
+        width: 30
+        pos: (60, window_height-30)
+    BaseButton:
+        id: connect_button
+        text: 'Соединиться'
+        size: (90, 25)
+        font_size: 12
+        pos: (100, window_height-33)
+        padding: [5, 2]
+    BaseLabel:
+        text: 'Motor'
+        pos: (window_width-150, window_height-30)
+    Switch:
+        id: motor_switch
+        active: False
+        size_hint: (None, None)
+        pos: (300, window_height-70)
+    ParamLabel:
+        text: 'Скорость (об/мин)'
+        pos: (10, window_height-80)
+    ParamInput:
+        id: speed_input
+        pos: (190, window_height-80)
+    ParamLabel:
+        text: 'Время ускорения (мс)'
+        pos: (10, window_height-110)
+    ParamInput:
+        id: accel_time_input
+        pos: (190, window_height-110)
+    ParamLabel:
+        text: 'Время торможения (мс)'
+        pos: (10, window_height-140)
+    ParamInput:
+        id: deccel_time_input
+        pos: (190, window_height-140)
+    ParamLabel:
+        text: 'Время работы (мс)'
+        pos: (10, window_height-170)
+    ParamInput:
+        id: work_time_input
+        pos: (190, window_height-170)
+    Image:
+        source: 'logo.jpg'
+        size_hint: (None, None)
+        size: (150, 150)
+        pos: (window_width-155, window_height-188)
+    BaseButton:
+        id: apply_param_button
+        text: 'Применить параметры'
+        size_hint: (.8, None)
+        pos: (200 - 400*.8*.5, window_height - 220)
+
+<AutoMode>:
+    start_button: start_button
+    stop_button: stop_button
+    mode_button: mode_button
+    reverse_switch: reverse_switch
+    size_hint: (1, None)
+    height: window_height - 255
+    pos: (0, window_height - 255)
+    BaseButton:
+        id: start_button
+        pos: (40, window_height - 265)
+        width: 90
+        text: 'Старт'
+        on_press: self.start_servo_time_work
+    BaseButton:
+        id: stop_button
+        pos: (140, window_height - 265)
+        width: 90
+        text: 'Стоп'
+        on_press: self.stop_servo_time_work_btn
+    BaseButton:
+        id: mode_button
+        pos: (240, window_height - 265)
+        width: 120
+        text: 'Ручной режим'
+    ParamLabel:
+        pos: (30, window_height - 300)
+        text: 'Реверс'
+    Switch:
+        id: reverse_switch
+        size_hint: (None, None)
+        size: (80, 40)
+        pos: (210, window_height - 310)
+        on_active: self.change_reverse
+
+
+<ManualMode>:
+    left_button: left_button
+    right_button: right_button
+    mode_button: mode_button
+    size_hint: (1, None)
+    height: window_height - 255
+    pos: (0, window_height - 255)
+    BaseButton:
+        id: left_button
+        pos: (40, window_height - 265)
+        width: 90
+        text: '<--'
+        on_press: self.right_btn_state
+    BaseButton:
+        id: right_button
+        pos: (140, window_height - 265)
+        width: 90
+        text: '-->'
+        on_press: self.left_btn_state
+    BaseButton:
+        id: mode_button
+        pos: (240, window_height - 265)
+        width: 120
+        text: 'Авто режим'
+
+<ParamInput>:
+    size_hint: (None, None)
+    width: 50
+    height: 20
+    font_size: '12sp'
+    multiline: False
+    padding: [6, 2]
+
+<BaseLabel>:
+    size_hint: (None, None)
+    width: 40
+    height: 20
+    font_size: '14sp'
+    color: (0.2, 0.2, 0.2, 1)
+
+<ParamLabel>:
+    text_size: (200, 20)
+    width: 120
+    halign: 'right'
+
+<BaseButton>:
+    size_hint: (None, None)
+    color: (0.8, 0.8, 0.8, 1)
+    height: 30
