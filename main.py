@@ -20,8 +20,10 @@ from kivy.uix.image import Image
 from kivy.config import Config
 
 from kivy.graphics import Color, Rectangle
-
-
+from kivy.lang import Builder
+with open("main.kv", encoding='utf-8') as f:  # Note the name of the .kv
+    # doesn't match the name of the App
+    Builder.load_string(f.read())
 
 window_height = 320
 window_width = 400
@@ -248,15 +250,6 @@ class ManualMode(FloatLayout):
         self.left_button.bind(state=self.left_btn_state)
         self.right_button.bind(state=self.right_btn_state)
         self.mode_button.bind(on_press=App.root_widget.change_mode)
-
-class BaseLabel(Label):
-    pass
-
-class ParamLabel(BaseLabel):
-    pass
-
-class BaseButton(Button):
-    pass
 
 class ParamInput(TextInput):
     def params_changed(self, instance, value):
