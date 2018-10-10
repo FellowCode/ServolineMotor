@@ -9,6 +9,9 @@
     accel_time_input: accel_time_input
     deccel_time_input: deccel_time_input
     work_time_input: work_time_input
+    preset_button: preset_button
+    add_preset_button: add_preset_button
+    del_preset_button: del_preset_button
     apply_param_button: apply_param_button
     canvas:
         Color:
@@ -68,10 +71,37 @@
         size: (150, 150)
         pos: (window_width-155, window_height-188)
     BaseButton:
+        id: preset_button
+        text: 'Пресет'
+        size: (130, 25)
+        pos: (40, window_height - 205)
+    BaseButton:
+        id: add_preset_button
+        size: (25, 25)
+        pos: (175, window_height - 205)
+        Image:
+            source: 'add.png'
+            y: self.parent.y + self.parent.size[1]*.1
+            x: self.parent.x + self.parent.size[0]*.1
+            size: (self.parent.size[0]*.8, self.parent.size[1]*.8)
+            allow_stretch: True
+            color: (.8,.8,.8,1)
+    BaseButton:
+        id: del_preset_button
+        size: (25, 25)
+        pos: (205, window_height - 205)
+        Image:
+            source: 'delete.png'
+            y: self.parent.y + self.parent.size[1]*.1
+            x: self.parent.x + self.parent.size[0]*.1
+            size: (self.parent.size[0]*.8, self.parent.size[1]*.8)
+            allow_stretch: True
+            color: (.8,.8,.8,1)
+    BaseButton:
         id: apply_param_button
         text: 'Применить параметры'
         size_hint: (.8, None)
-        pos: (200 - 400*.8*.5, window_height - 220)
+        pos: (200 - 400*.8*.5, window_height - 240)
 
 <AutoMode>:
     start_button: start_button
@@ -79,31 +109,31 @@
     mode_button: mode_button
     reverse_switch: reverse_switch
     size_hint: (1, None)
-    height: window_height - 255
-    pos: (0, window_height - 255)
+    height: window_height - 300
+    pos: (0, window_height - 300)
     BaseButton:
         id: start_button
-        pos: (40, window_height - 265)
+        pos: (40, window_height - 275)
         width: 90
         text: 'Старт'
     BaseButton:
         id: stop_button
-        pos: (140, window_height - 265)
+        pos: (140, window_height - 275)
         width: 90
         text: 'Стоп'
     BaseButton:
         id: mode_button
-        pos: (240, window_height - 265)
+        pos: (240, window_height - 275)
         width: 120
         text: 'Ручной режим'
     ParamLabel:
-        pos: (30, window_height - 300)
+        pos: (-70, window_height - 305)
         text: 'Реверс'
     Switch:
         id: reverse_switch
         size_hint: (None, None)
         size: (80, 40)
-        pos: (210, window_height - 310)
+        pos: (110, window_height - 315)
         on_active: self.change_reverse
 
 
@@ -152,5 +182,76 @@
 
 <BaseButton@Button>:
     size_hint: (None, None)
-    color: (0.8, 0.8, 0.8, 1)
+    color: (0.9, 0.9, 0.9, 1)
     height: 30
+
+<AddPresetPopup@Popup>:
+    size_hint: None, None
+    size: 300, 130
+    title: 'Добавить пресет'
+    preset_input: preset_input
+    ok_button: ok_button
+    cancel_button: cancel_button
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 5
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            TextInput:
+                id: preset_input
+                size_hint: 0.7, 0.9
+        BoxLayout:
+            Button:
+                id: ok_button
+                text: 'Добавить'
+            Button:
+                id: cancel_button
+                text: 'Отмена'
+
+<QuestionPopup@Popup>:
+    size_hint: None, None
+    size: 340, 130
+    title: 'Подтвердите'
+    question: question
+    ok_button: ok_button
+    cancel_button: cancel_button
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 5
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Label:
+                id: question
+                text: 'Какой-то вопрос'
+        BoxLayout:
+            Button:
+                id: ok_button
+                text: 'Ok'
+            Button:
+                id: cancel_button
+                text: 'Отмена'
+
+<ErrorPopup@Popup>:
+    size_hint: None, None
+    size: 300, 200
+    title: 'Ошибка'
+    BoxLayout:
+        orientation: vertical
+        spacing: 5
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            size_hint_y: 0.8
+            Label:
+                id: error
+                text: 'Какой-то текст'
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Button:
+                id: ok_button
+                text: 'Ok'
+
+

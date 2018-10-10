@@ -4,6 +4,7 @@ from kivy.properties import ObjectProperty
 from modbus import Modbus
 from threading import Timer
 from servo_reg import ServoReg
+import pickle
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
@@ -16,6 +17,7 @@ from kivy.uix.label import Label
 from kivy.uix.switch import Switch
 from kivy.uix.popup import Popup
 from kivy.uix.image import Image
+from kivy.uix.dropdown import DropDown
 
 from kivy.config import Config
 
@@ -33,6 +35,14 @@ Config.set('graphics', 'resizable', 0)
 Config.set('graphics', 'width', window_width)
 Config.set('graphics', 'height', window_height)
 Config.write()
+
+class Preset:
+    def __init__(self, name, speed, accel_time, deccel_time, work_time):
+        self.name = name
+        self.speed = speed
+        self.accel_time = accel_time
+        self.deccel_time = deccel_time
+        self.work_time = work_time
 
 class AutoMode(FloatLayout):
     reverse = False
@@ -76,7 +86,7 @@ class AutoMode(FloatLayout):
         super().__init__(**kwargs)
         self.start_button.bind(on_press=self.start_servo_time_work)
         self.stop_button.bind(on_press=self.stop_servo_time_work_btn)
-        self.mode_button.bind(on_press=App.root_widget.change_mode)
+        self.mode_button.bind(on_press=myApp.root_widget.change_mode)
         self.reverse_switch.active = self.reverse
 
 class ManualMode(FloatLayout):
@@ -105,7 +115,7 @@ class ManualMode(FloatLayout):
         super().__init__(**kwargs)
         self.left_button.bind(state=self.left_btn_state)
         self.right_button.bind(state=self.right_btn_state)
-        self.mode_button.bind(on_press=App.root_widget.change_mode)
+        self.mode_button.bind(on_press=myApp.root_widget.change_mode)
 
 class ParamInput(TextInput):
     def params_changed(self, instance, value):
@@ -126,11 +136,39 @@ class ParamInput(TextInput):
         self.bind(text=self.params_changed)
         self.bind(focus=self.params_focus)
 
+class AddPresetPopup(Popup):
+    preset_input = ObjectProperty()
+    ok_button = ObjectProperty()
+    cancel_button = ObjectProperty()
+
+    def save(self, instance):
+        if self.preset_input.text != '':
+            myApp.root_widget.add_preset(self.preset_input.text)
+            self.dismiss()
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.ok_button.bind(on_release=self.save)
+        self.cancel_button.bind(on_release=self.dismiss)
+
+class QuestionPopup(Popup):
+    question = ObjectProperty()
+    ok_button = ObjectProperty()
+    cancel_button = ObjectProperty()
+
+    ok_func = None
+
+    def ok_btn(self, func):
+        self.ok_func()
+        self.dismiss()
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.ok_button.bind(on_release=self.ok_btn)
+        self.cancel_button.bind(on_release=self.dismiss)
 
 class RootWidget(FloatLayout):
-
     auto_mode = True
-
     buttons_is_disable = False
 
     com_num = 1
@@ -141,6 +179,8 @@ class RootWidget(FloatLayout):
     deccel_time = 0
     work_time = 0
     reverse = False
+    presets = []
+    selected_preset = -1
 
     com_input = ObjectProperty()
     connect_button = ObjectProperty()
@@ -150,6 +190,9 @@ class RootWidget(FloatLayout):
     work_time_input = ObjectProperty()
     motor_switch = ObjectProperty()
     apply_param_button = ObjectProperty()
+    preset_button = ObjectProperty()
+    add_preset_button = ObjectProperty()
+    del_preset_button = ObjectProperty()
 
     def save_params(self):
         f = open('settings.txt', 'w')
@@ -173,6 +216,52 @@ class RootWidget(FloatLayout):
             f.close()
         except:
             pass
+
+    def save_presets(self):
+        with open('presets.prs', 'wb') as f:
+            pickle.dump(self.presets, f)
+
+    def load_presets(self):
+        try:
+            with open('presets.prs', 'rb') as f:
+                self.presets = pickle.load(f)
+        except:
+            pass
+
+    def add_preset_popup(self, instance):
+        popup = AddPresetPopup()
+        popup.open()
+
+    def add_preset(self, name):
+        preset = Preset(name, int(self.speed_input.text), int(self.accel_time_input.text),
+                        int(self.deccel_time_input.text), int(self.work_time_input.text))
+        self.presets.append(preset)
+        self.save_presets()
+        self.update_presets_dropdown()
+
+    def del_preset(self):
+        if self.selected_preset >= 0:
+            del self.presets[self.selected_preset]
+            self.save_presets()
+            self.update_presets_dropdown()
+            self.preset_button.text = 'Пресет'
+
+    def del_preset_btn(self, instance):
+        if self.selected_preset >= 0:
+            quest_popup = QuestionPopup()
+            quest_popup.ok_func = self.del_preset
+            quest_popup.question.text = 'Вы действительно хотите удалить пресет?'
+            quest_popup.open()
+
+    def select_preset(self, instance):
+        self.selected_preset = int(instance.id)
+        preset = self.presets[self.selected_preset]
+        self.preset_button.text = instance.text
+        self.speed_input.text = str(preset.speed)
+        self.accel_time_input.text = str(preset.accel_time)
+        self.deccel_time_input.text = str(preset.deccel_time)
+        self.work_time_input.text = str(preset.work_time)
+        self.dropdown.dismiss()
 
     def change_mode(self, instance):
         self.auto_mode = not self.auto_mode
@@ -219,7 +308,7 @@ class RootWidget(FloatLayout):
 
     def disable_buttons(self, val):
         self.buttons_is_disable = val
-        App.mode_widget.disable_buttons(val)
+        myApp.mode_widget.disable_buttons(val)
 
     def change_motor_state(self, instance, value):
         if value:
@@ -256,12 +345,20 @@ class RootWidget(FloatLayout):
             pass
         self.save_params()
 
+    def update_presets_dropdown(self):
+        self.dropdown.clear_widgets()
+        for index, preset in enumerate(self.presets):
+            btn = Button(id=str(index), text=str(preset.name), size_hint_y=None, height=25)
+            btn.bind(on_release=self.select_preset)
+            self.dropdown.add_widget(btn)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         try:
             self.load_params()
         except:
             pass
+        self.load_presets()
         self.com_input.text = str(self.com_num)
         self.com_input.bind(text=self.com_changed)
         self.connect_button.bind(on_press=self.change_connect)
@@ -271,6 +368,14 @@ class RootWidget(FloatLayout):
         self.work_time_input.text = str(self.work_time)
         self.motor_switch.bind(active=self.change_motor_state)
         self.motor_switch.disabled = True
+
+        self.dropdown = DropDown()
+        self.update_presets_dropdown()
+        self.preset_button.bind(on_release=self.dropdown.open)
+
+        self.add_preset_button.bind(on_press=self.add_preset_popup)
+        self.del_preset_button.bind(on_press=self.del_preset_btn)
+
         self.apply_param_button.bind(on_press=self.set_params)
         self.apply_param_button.disabled = True
 
@@ -294,7 +399,7 @@ class ServolineMotorApp(App):
         self.root_widget.disconnect()
 
 
-App = ServolineMotorApp()
+myApp = ServolineMotorApp()
 
 if __name__ == '__main__':
-    App.run()
+    myApp.run()
