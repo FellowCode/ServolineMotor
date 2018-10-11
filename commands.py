@@ -25,6 +25,10 @@ def set_param_command(register, value):
     msg = ':0106' + get_value_hex(register) + get_value_hex(value)
     return msg + get_LRC(msg) + '\r\n'
 
+def get_param_command(register):
+    msg = ':0103' + get_value_hex(register) + '0001'
+    return msg + get_LRC(msg) + '\r\n'
+
 def JOG_on_command():
     return ':010301320001C8\r\n'
 

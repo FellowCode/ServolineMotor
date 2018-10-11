@@ -6,13 +6,18 @@
     connect_button: connect_button
     motor_switch: motor_switch
     speed_input: speed_input
+    speed_error_img: speed_error_img
     accel_time_input: accel_time_input
+    accel_error_img: accel_error_img
     deccel_time_input: deccel_time_input
+    deccel_error_img: deccel_error_img
     work_time_input: work_time_input
+    work_error_img: work_error_img
     preset_button: preset_button
     add_preset_button: add_preset_button
     del_preset_button: del_preset_button
     apply_param_button: apply_param_button
+    update_params_button: update_params_button
     canvas:
         Color:
             rgb: (0.8, 0.8, 0.8, 1)
@@ -47,29 +52,57 @@
     ParamInput:
         id: speed_input
         pos: (190, window_height-80)
+    Image:
+        id: speed_error_img
+        source: 'error2.png'
+        size_hint: None, None
+        size: 20, 20
+        pos: 228, window_height - 80
+        color: (1, 1, 1, 1)
     ParamLabel:
         text: 'Время ускорения (мс)'
-        pos: (10, window_height-110)
+        pos: (10, window_height - 110)
     ParamInput:
         id: accel_time_input
-        pos: (190, window_height-110)
+        pos: (190, window_height - 110)
+    Image:
+        id: accel_error_img
+        source: 'error2.png'
+        size_hint: None, None
+        size: 20, 20
+        pos: 228, window_height - 110
+        color: (1, 1, 1, 1)
     ParamLabel:
         text: 'Время торможения (мс)'
-        pos: (10, window_height-140)
+        pos: (10, window_height - 140)
     ParamInput:
         id: deccel_time_input
-        pos: (190, window_height-140)
+        pos: (190, window_height - 140)
+    Image:
+        id: deccel_error_img
+        source: 'error2.png'
+        size_hint: None, None
+        size: 20, 20
+        pos: 228, window_height - 140
+        color: (1, 1, 1, 1)
     ParamLabel:
         text: 'Время работы (мс)'
-        pos: (10, window_height-170)
+        pos: (10, window_height - 170)
     ParamInput:
         id: work_time_input
-        pos: (190, window_height-170)
+        pos: (190, window_height - 170)
+    Image:
+        id: work_error_img
+        source: 'error2.png'
+        size_hint: None, None
+        size: 20, 20
+        pos: 228, window_height - 170
+        color: (1, 1, 1, 0)
     Image:
         source: 'logo.jpg'
         size_hint: (None, None)
         size: (150, 150)
-        pos: (window_width-155, window_height-188)
+        pos: (window_width-155, window_height-195)
     BaseButton:
         id: preset_button
         text: 'Пресет'
@@ -79,29 +112,29 @@
         id: add_preset_button
         size: (25, 25)
         pos: (175, window_height - 205)
-        Image:
+        ButtonImage:
             source: 'add.png'
-            y: self.parent.y + self.parent.size[1]*.1
-            x: self.parent.x + self.parent.size[0]*.1
-            size: (self.parent.size[0]*.8, self.parent.size[1]*.8)
-            allow_stretch: True
-            color: (.8,.8,.8,1)
     BaseButton:
         id: del_preset_button
         size: (25, 25)
         pos: (205, window_height - 205)
-        Image:
+        ButtonImage:
             source: 'delete.png'
-            y: self.parent.y + self.parent.size[1]*.1
-            x: self.parent.x + self.parent.size[0]*.1
-            size: (self.parent.size[0]*.8, self.parent.size[1]*.8)
-            allow_stretch: True
-            color: (.8,.8,.8,1)
     BaseButton:
         id: apply_param_button
         text: 'Применить параметры'
-        size_hint: (.8, None)
-        pos: (200 - 400*.8*.5, window_height - 240)
+        size_hint: (None, None)
+        width: 290
+        pos: (40, window_height - 240)
+
+    BaseButton:
+        id: update_params_button
+        size_hint: (None, None)
+        width: 30
+        pos: (330, window_height - 240)
+        ButtonImage:
+            source: 'update.png'
+
 
 <AutoMode>:
     start_button: start_button
@@ -146,23 +179,23 @@
     pos: (0, window_height - 255)
     BaseButton:
         id: left_button
-        pos: (40, window_height - 265)
+        pos: (40, window_height - 275)
         width: 90
         text: '<--'
     BaseButton:
         id: right_button
-        pos: (140, window_height - 265)
+        pos: (140, window_height - 275)
         width: 90
         text: '-->'
     BaseButton:
         id: mode_button
-        pos: (240, window_height - 265)
+        pos: (240, window_height - 275)
         width: 120
         text: 'Авто режим'
 
 <ParamInput>:
     size_hint: (None, None)
-    width: 50
+    width: 40
     height: 20
     font_size: '12sp'
     multiline: False
@@ -184,6 +217,13 @@
     size_hint: (None, None)
     color: (0.9, 0.9, 0.9, 1)
     height: 30
+
+<ButtonImage@Image>:
+    y: self.parent.y + self.parent.size[1]*.1
+    x: self.parent.x + self.parent.size[0]*.1
+    size: (self.parent.size[0]*.8, self.parent.size[1]*.8)
+    allow_stretch: True
+    color: (.8,.8,.8,1)
 
 <AddPresetPopup@Popup>:
     size_hint: None, None

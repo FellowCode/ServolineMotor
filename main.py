@@ -5,6 +5,7 @@ from modbus import Modbus
 from threading import Timer
 from servo_reg import ServoReg
 import pickle
+from copy import deepcopy
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
@@ -51,14 +52,14 @@ class AutoMode(FloatLayout):
     mode_button = ObjectProperty()
     reverse_switch = ObjectProperty()
     def start_servo_time_work(self, instance):
-        self.motor_timer = Timer(self.work_time/1000, self.stop_servo_time_work)
+        self.motor_timer = Timer(myApp.root_widget.work_time/1000, self.stop_servo_time_work)
         self.motor_timer.start()
         self.start_button.disabled = True
         self.reverse_switch.disabled = True
         if not self.reverse:
-            self.motor.servo_forward_start()
+            myApp.root_widget.motor.servo_forward_start()
         else:
-            self.motor.servo_reverse_start()
+            myApp.root_widget.motor.servo_reverse_start()
 
     def stop_servo_time_work_btn(self, instance):
         self.stop_servo_time_work()
@@ -68,9 +69,9 @@ class AutoMode(FloatLayout):
         self.start_button.disabled = False
         self.reverse_switch.disabled = False
         if not self.reverse:
-            self.motor.servo_forward_stop()
+            myApp.root_widget.motor.servo_forward_stop()
         else:
-            self.motor.servo_reverse_stop()
+            myApp.root_widget.motor.servo_reverse_stop()
 
     def change_reverse(self, instance, value):
         self.reverse = value
@@ -86,7 +87,7 @@ class AutoMode(FloatLayout):
         super().__init__(**kwargs)
         self.start_button.bind(on_press=self.start_servo_time_work)
         self.stop_button.bind(on_press=self.stop_servo_time_work_btn)
-        self.mode_button.bind(on_press=myApp.root_widget.change_mode)
+        self.mode_button.bind(on_press=myApp.change_mode)
         self.reverse_switch.active = self.reverse
 
 class ManualMode(FloatLayout):
@@ -96,15 +97,15 @@ class ManualMode(FloatLayout):
 
     def left_btn_state(self, instance, value):
         if value is 'down':
-            self.motor.servo_forward_start()
+            myApp.root_widget.motor.servo_forward_start()
         else:
-            self.motor.servo_forward_stop()
+            myApp.root_widget.motor.servo_forward_stop()
 
     def right_btn_state(self, instance, value):
         if value is 'down':
-            self.motor.servo_reverse_start()
+            myApp.root_widget.motor.servo_reverse_start()
         else:
-            self.motor.servo_reverse_stop()
+            myApp.root_widget.motor.servo_reverse_stop()
 
     def disable_buttons(self, val):
         self.left_button.disabled = val
@@ -115,7 +116,7 @@ class ManualMode(FloatLayout):
         super().__init__(**kwargs)
         self.left_button.bind(state=self.left_btn_state)
         self.right_button.bind(state=self.right_btn_state)
-        self.mode_button.bind(on_press=myApp.root_widget.change_mode)
+        self.mode_button.bind(on_press=myApp.change_mode)
 
 class ParamInput(TextInput):
     def params_changed(self, instance, value):
@@ -130,6 +131,7 @@ class ParamInput(TextInput):
     def params_focus(self, instance, value):
         if len(instance.text) == 0:
             instance.text = '0'
+        myApp.root_widget.check_param_equals()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -168,7 +170,6 @@ class QuestionPopup(Popup):
         self.cancel_button.bind(on_release=self.dismiss)
 
 class RootWidget(FloatLayout):
-    auto_mode = True
     buttons_is_disable = False
 
     com_num = 1
@@ -185,33 +186,38 @@ class RootWidget(FloatLayout):
     com_input = ObjectProperty()
     connect_button = ObjectProperty()
     speed_input = ObjectProperty()
+    speed_error_img = ObjectProperty()
     accel_time_input = ObjectProperty()
+    accel_error_img = ObjectProperty()
     deccel_time_input = ObjectProperty()
+    deccel_error_img = ObjectProperty()
     work_time_input = ObjectProperty()
+    work_error_img = ObjectProperty()
     motor_switch = ObjectProperty()
     apply_param_button = ObjectProperty()
     preset_button = ObjectProperty()
     add_preset_button = ObjectProperty()
     del_preset_button = ObjectProperty()
+    update_params_button = ObjectProperty()
 
     def save_params(self):
-        f = open('settings.txt', 'w')
-        f.write(str(self.com_num)+'\n')
-        f.write(str(self.speed)+'\n')
-        f.write(str(self.accel_time)+'\n')
-        f.write(str(self.deccel_time)+'\n')
-        f.write(str(self.work_time)+'\n')
-        f.write(str(self.reverse)+'\n')
-        f.close()
+        with open('settings.txt', 'w') as f:
+            f.write(str(self.com_num)+'\n')
+            f.write(str(self.speed)+'\n')
+            f.write(str(self.accel_time)+'\n')
+            f.write(str(self.deccel_time)+'\n')
+            f.write(str(self.work_time)+'\n')
+            f.write(str(self.reverse)+'\n')
 
     def load_params(self):
         try:
             f = open('settings.txt')
             self.com_num = int(f.readline())
-            self.speed = int(f.readline())
-            self.accel_time = int(f.readline())
-            self.deccel_time = int(f.readline())
-            self.work_time = int(f.readline())
+            self.speed_input.text = f.readline().strip()
+            self.accel_time_input.text = f.readline().strip()
+            self.deccel_time_input.text = f.readline().strip()
+            self.work_time_input.text = f.readline().strip()
+            self.work_time = int(self.work_time_input.text)
             self.reverse = f.readline().strip()=='True'
             f.close()
         except:
@@ -227,6 +233,49 @@ class RootWidget(FloatLayout):
                 self.presets = pickle.load(f)
         except:
             pass
+
+    def check_param_equals(self):
+        if int(self.speed_input.text) != self.speed:
+            self.speed_error_img.color = (1, 1, 1, 1)
+        else:
+            self.speed_error_img.color = (1, 1, 1, 0)
+        if int(self.accel_time_input.text) != self.accel_time:
+            self.accel_error_img.color = (1, 1, 1, 1)
+        else:
+            self.accel_error_img.color = (1, 1, 1, 0)
+        if int(self.deccel_time_input.text) != self.deccel_time:
+            self.deccel_error_img.color = (1, 1, 1, 1)
+        else:
+            self.deccel_error_img.color = (1, 1, 1, 0)
+        if int(self.work_time_input.text) != self.work_time:
+            self.work_error_img.color = (1, 1, 1, 1)
+        else:
+            self.work_error_img.color = (1, 1, 1, 0)
+
+    def set_param(self, register, value):
+        if register == ServoReg.SPEED:
+            self.speed = value
+            self.speed_input.text = str(value)
+        elif register == ServoReg.ACCEL_TIME:
+            self.accel_time = value
+            self.accel_time_input.text = str(value)
+        elif register == ServoReg.DECCEL_TIME:
+            self.deccel_time = value
+            self.deccel_time_input.text = str(value)
+        self.check_param_equals()
+
+    def servo_sync_params(self, instance):
+        registers = [ServoReg.SPEED, ServoReg.ACCEL_TIME, ServoReg.DECCEL_TIME]
+        for register in registers:
+            def check_answer(*args, **kwargs):
+                try:
+                    ans = kwargs['ans']
+                    register = kwargs['register']
+                    if ans[:7] == ':010302':
+                        myApp.root_widget.set_param(register, int(ans[7:11], 16))
+                except:
+                    pass
+            self.motor.get_param(register, check_answer)
 
     def add_preset_popup(self, instance):
         popup = AddPresetPopup()
@@ -263,15 +312,6 @@ class RootWidget(FloatLayout):
         self.work_time_input.text = str(preset.work_time)
         self.dropdown.dismiss()
 
-    def change_mode(self, instance):
-        self.auto_mode = not self.auto_mode
-        if self.auto_mode:
-            self.fl_mode_manual.clear_widgets()
-            self.build_auto_mode()
-        else:
-            self.fl_mode_auto.clear_widgets()
-            self.build_manual_mode()
-
     def com_changed(self, instance, value):
         try:
             if len(instance.text) > 2:
@@ -295,6 +335,8 @@ class RootWidget(FloatLayout):
             self.connect_button.text = 'Отключиться'
             self.motor_switch.disabled = False
             self.apply_param_button.disabled = False
+            self.update_params_button.disabled = False
+        self.servo_sync_params(None)
 
     def disconnect(self):
         self.motor.disconnect()
@@ -303,6 +345,7 @@ class RootWidget(FloatLayout):
             self.motor_switch.active = False
             self.motor_switch.disabled = True
             self.apply_param_button.disabled = True
+            self.update_params_button.disabled = True
             self.disable_buttons(True)
 
 
@@ -362,10 +405,7 @@ class RootWidget(FloatLayout):
         self.com_input.text = str(self.com_num)
         self.com_input.bind(text=self.com_changed)
         self.connect_button.bind(on_press=self.change_connect)
-        self.speed_input.text = str(self.speed)
-        self.accel_time_input.text = str(self.accel_time)
-        self.deccel_time_input.text = str(self.deccel_time)
-        self.work_time_input.text = str(self.work_time)
+
         self.motor_switch.bind(active=self.change_motor_state)
         self.motor_switch.disabled = True
 
@@ -378,9 +418,21 @@ class RootWidget(FloatLayout):
 
         self.apply_param_button.bind(on_press=self.set_params)
         self.apply_param_button.disabled = True
+        self.update_params_button.bind(on_press=self.servo_sync_params)
+        self.update_params_button.disabled = True
 
 
 class ServolineMotorApp(App):
+    auto_mode = True
+    def change_mode(self, instance):
+        self.auto_mode = not self.auto_mode
+        self.root_widget.remove_widget(self.mode_widget)
+        if self.auto_mode:
+            self.build_auto_mode()
+        else:
+            self.build_manual_mode()
+        self.root_widget.add_widget(self.mode_widget)
+
     def build_auto_mode(self):
         self.mode_widget = AutoMode()
 

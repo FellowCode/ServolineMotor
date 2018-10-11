@@ -7,14 +7,22 @@ import time
 q = Queue()
 
 class Command:
-    def __init__(self, cm, right_ans, error_func):
+    right_func = None
+    error_func = None
+    def func(self, *args, **kwargs):
+        if self.right_func:
+            self.right_func(*args, **kwargs)
+
+    def __init__(self, cm, right_ans=None, func=None, error_func=None, register=None):
         self.cm = cm
         self.right_ans = right_ans
         self.error_func = error_func
+        self.right_func = func
+        self.register = register
 
-    def error(self):
+    def error(self, *args, **kwargs):
         if self.error_func:
-            self.error_func()
+            self.error_func(*args, **kwargs)
 
 class SendCommandThread(Thread):
     work = True
@@ -26,13 +34,15 @@ class SendCommandThread(Thread):
 
     def run(self):
         while self.work:
-            time.sleep(0.2)
+            time.sleep(0.03)
             if q.not_empty:
                 command = q.get()
                 self.ser.write(command.cm.encode('utf-8'))
                 ans = self.ser.read(100).decode('utf-8')[:-2]
-                if command.right_ans != ans:
-                    command.error_func()
+                print(ans)
+                command.func(ans=ans, register=command.register)
+                if command.right_ans and command.right_ans != ans:
+                    command.error()
                 q.task_done()
 
 
@@ -62,42 +72,47 @@ class Modbus:
             self.ser.close()
             self.is_connect = False
 
-    def send_command(self, cm, right_ans, error_func=None):
-        command = Command(cm, right_ans, error_func)
+    def send_command(self, cm, right_ans=None, error_func=None):
+        command = Command(cm=cm, right_ans=right_ans, error_func=error_func)
         q.put(command)
 
     def set_param(self, register, value, error_func=None):
         cm = set_param_command(register, value)
-        return self.send_command(cm, cm, error_func)
+        self.send_command(cm=cm, right_ans=cm, error_func=error_func)
+
+    def get_param(self, register, func):
+        cm = get_param_command(register)
+        command = Command(cm=cm, func=func, register=register)
+        q.put(command)
 
     def JOG_On(self):
         cm = JOG_on_command()
-        return self.send_command(cm, ':0103020032C8')
+        self.send_command(cm, ':0103020032C8')
 
     def JOG_Off(self):
         cm = JOG_off_command()
-        return self.send_command(cm, ':011009000003E3')
+        self.send_command(cm, ':011009000003E3')
 
     def servo_on(self):
         cm = servo_on_command()
-        return self.send_command(cm, cm)
+        self.send_command(cm, cm)
 
     def servo_off(self):
         cm = servo_off_command()
-        return self.send_command(cm, cm)
+        self.send_command(cm, cm)
 
     def servo_forward_start(self):
         cm = servo_forward_start_command()
-        return self.send_command(cm, cm)
+        self.send_command(cm, cm)
 
     def servo_forward_stop(self):
         cm = servo_forward_stop_command()
-        return self.send_command(cm, cm)
+        self.send_command(cm, cm)
 
     def servo_reverse_start(self):
         cm = servo_reverse_start_command()
-        return self.send_command(cm, cm)
+        self.send_command(cm, cm)
 
     def servo_reverse_stop(self):
         cm = servo_reverse_stop_command()
-        return self.send_command(cm, cm)
+        self.send_command(cm, cm)
