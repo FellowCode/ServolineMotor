@@ -214,6 +214,7 @@ class RootWidget(FloatLayout):
     update_params_button = ObjectProperty()
 
     def resource_path(self, relative_path):
+        print(resource_path(relative_path))
         return resource_path(relative_path)
 
     def save_params(self):

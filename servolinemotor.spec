@@ -13,11 +13,8 @@ a = Analysis(['src\\main.py'],
   pathex=['C:\\Users\\sergo\\Desktop\\ServolineMotor\\'],
   binaries=None,
   datas=[('src\\main.kv', '.'),
-         ('src\\logo.jpg', '.'),
-         ('src\\update.png', '.'),
-         ('src\\error2.png', '.'),
-         ('src\\add.png', '.'),
-         ('src\\delete.png', '.')],
+         ('src\\img\\*.jpg', 'img'),
+         ('src\\img\\*.png', 'img')],
 
   hiddenimports=[
   'webbrowser',
