@@ -54,7 +54,7 @@
         pos: (190, window_height-80)
     Image:
         id: speed_error_img
-        source: 'error2.png'
+        source: self.parent.resource_path('error2.png')
         size_hint: None, None
         size: 20, 20
         pos: 228, window_height - 80
@@ -67,7 +67,7 @@
         pos: (190, window_height - 110)
     Image:
         id: accel_error_img
-        source: 'error2.png'
+        source: self.parent.resource_path('error2.png')
         size_hint: None, None
         size: 20, 20
         pos: 228, window_height - 110
@@ -80,7 +80,7 @@
         pos: (190, window_height - 140)
     Image:
         id: deccel_error_img
-        source: 'error2.png'
+        source: self.parent.resource_path('error2.png')
         size_hint: None, None
         size: 20, 20
         pos: 228, window_height - 140
@@ -93,13 +93,13 @@
         pos: (190, window_height - 170)
     Image:
         id: work_error_img
-        source: 'error2.png'
+        source: self.parent.resource_path('error2.png')
         size_hint: None, None
         size: 20, 20
         pos: 228, window_height - 170
-        color: (1, 1, 1, 0)
+        color: (1, 1, 1, 1)
     Image:
-        source: 'logo.jpg'
+        source: self.parent.resource_path('logo.jpg')
         size_hint: (None, None)
         size: (150, 150)
         pos: (window_width-155, window_height-195)
@@ -113,13 +113,13 @@
         size: (25, 25)
         pos: (175, window_height - 205)
         ButtonImage:
-            source: 'add.png'
+            source: self.parent.parent.resource_path('add.png')
     BaseButton:
         id: del_preset_button
         size: (25, 25)
         pos: (205, window_height - 205)
         ButtonImage:
-            source: 'delete.png'
+            source: self.parent.parent.resource_path('delete.png')
     BaseButton:
         id: apply_param_button
         text: 'Применить параметры'
@@ -133,7 +133,7 @@
         width: 30
         pos: (330, window_height - 240)
         ButtonImage:
-            source: 'update.png'
+            source: self.parent.parent.resource_path('update.png')
 
 
 <AutoMode>:
@@ -194,6 +194,7 @@
         text: 'Авто режим'
 
 <ParamInput>:
+    text: '0'
     size_hint: (None, None)
     width: 40
     height: 20

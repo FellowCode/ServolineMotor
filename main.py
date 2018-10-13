@@ -5,6 +5,8 @@ from modbus import Modbus
 from threading import Timer
 from servo_reg import ServoReg
 import pickle
+import sys
+import os
 from copy import deepcopy
 
 from kivy.app import App
@@ -24,7 +26,18 @@ from kivy.config import Config
 
 from kivy.graphics import Color, Rectangle
 from kivy.lang import Builder
-with open("main.kv", encoding='utf-8') as f:  # Note the name of the .kv
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+kv_path = 'main.kv'
+with open(resource_path(kv_path), encoding='utf-8') as f:  # Note the name of the .kv
     # doesn't match the name of the App
     Builder.load_string(f.read())
 
@@ -175,10 +188,10 @@ class RootWidget(FloatLayout):
     com_num = 1
     motor = Modbus()
 
-    speed = 0
-    accel_time = 0
-    deccel_time = 0
-    work_time = 0
+    speed = -1
+    accel_time = -1
+    deccel_time = -1
+    work_time = -1
     reverse = False
     presets = []
     selected_preset = -1
@@ -199,6 +212,9 @@ class RootWidget(FloatLayout):
     add_preset_button = ObjectProperty()
     del_preset_button = ObjectProperty()
     update_params_button = ObjectProperty()
+
+    def resource_path(self, relative_path):
+        return resource_path(relative_path)
 
     def save_params(self):
         with open('settings.txt', 'w') as f:
