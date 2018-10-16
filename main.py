@@ -144,6 +144,8 @@ class ParamInput(TextInput):
     def params_focus(self, instance, value):
         if len(instance.text) == 0:
             instance.text = '0'
+        elif int(instance.text) < 0:
+            instance.text = '0'
         myApp.root_widget.check_param_equals()
 
     def __init__(self, **kwargs):
@@ -230,12 +232,14 @@ class RootWidget(FloatLayout):
         try:
             f = open('settings.txt')
             self.com_num = int(f.readline())
-            self.speed_input.text = f.readline().strip()
-            self.accel_time_input.text = f.readline().strip()
-            self.deccel_time_input.text = f.readline().strip()
-            self.work_time_input.text = f.readline().strip()
-            self.work_time = int(self.work_time_input.text)
-            self.reverse = f.readline().strip()=='True'
+            speed = f.readline().strip()
+            if speed != '-1':
+                self.speed_input.text = speed
+                self.accel_time_input.text = f.readline().strip()
+                self.deccel_time_input.text = f.readline().strip()
+                self.work_time_input.text = f.readline().strip()
+                self.work_time = int(self.work_time_input.text)
+                self.reverse = f.readline().strip()=='True'
             f.close()
         except:
             pass
@@ -280,6 +284,7 @@ class RootWidget(FloatLayout):
             self.deccel_time = value
             self.deccel_time_input.text = str(value)
         self.check_param_equals()
+        self.save_params()
 
     def servo_sync_params(self, instance):
         registers = [ServoReg.SPEED, ServoReg.ACCEL_TIME, ServoReg.DECCEL_TIME]
@@ -372,31 +377,40 @@ class RootWidget(FloatLayout):
 
     def change_motor_state(self, instance, value):
         if value:
-            self.motor.servo_on()
+            def check_motor_is_on(*args, **kwargs):
+                ans = kwargs['ans']
+                right_ans = kwargs['right_ans']
+                if ans == right_ans:
+                    myApp.root_widget.disable_buttons(not value)
+            self.motor.servo_on(func=check_motor_is_on)
         else:
             self.motor.servo_off()
-        self.disable_buttons(not value)
+            self.disable_buttons(not value)
 
     def set_params(self, instance):
+        def apply_param(*args, **kwargs):
+            ans = kwargs['ans']
+            right_ans = kwargs['right_ans']
+            if ans == right_ans:
+                register = int(ans[5:9], 16)
+                value = int(ans[9:13], 16)
+                myApp.root_widget.set_param(register, value)
         try:
             speed = int(self.speed_input.text)
             if self.speed != speed:
-                self.motor.set_param(ServoReg.SPEED, speed)
-                self.speed = speed
+                self.motor.set_param(register=ServoReg.SPEED, value=speed, func=apply_param)
         except:
             pass
         try:
             accel_time = int(self.accel_time_input.text)
             if self.accel_time != accel_time:
-                self.motor.set_param(ServoReg.ACCEL_TIME, accel_time)
-                self.accel_time = accel_time
+                self.motor.set_param(register=ServoReg.ACCEL_TIME, value=accel_time, func=apply_param)
         except:
             pass
         try:
             deccel_time = int(self.deccel_time_input.text)
             if self.deccel_time != deccel_time:
-                self.motor.set_param(ServoReg.DECCEL_TIME, deccel_time)
-                self.deccel_time = deccel_time
+                self.motor.set_param(register=ServoReg.DECCEL_TIME, value=deccel_time, func=apply_param)
         except:
             pass
         try:

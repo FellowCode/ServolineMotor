@@ -38,10 +38,14 @@ class SendCommandThread(Thread):
             if q.not_empty:
                 command = q.get()
                 self.ser.write(command.cm.encode('utf-8'))
-                ans = self.ser.read(100).decode('utf-8')[:-2]
+                ans = self.ser.read(50).decode('utf-8')[:-2]
                 print(ans)
-                command.func(ans=ans, register=command.register)
-                if command.right_ans and command.right_ans != ans:
+                if command.right_ans:
+                    right_ans = command.right_ans[:-2]
+                else:
+                    right_ans = None
+                command.func(ans=ans, right_ans=right_ans, register=command.register)
+                if command.right_ans and command.right_ans[:-2] != ans:
                     command.error()
                 q.task_done()
 
@@ -76,9 +80,10 @@ class Modbus:
         command = Command(cm=cm, right_ans=right_ans, error_func=error_func)
         q.put(command)
 
-    def set_param(self, register, value, error_func=None):
+    def set_param(self, register, value, func=None, error_func=None):
         cm = set_param_command(register, value)
-        self.send_command(cm=cm, right_ans=cm, error_func=error_func)
+        command = Command(cm=cm, right_ans=cm, func=func, error_func=error_func)
+        q.put(command)
 
     def get_param(self, register, func):
         cm = get_param_command(register)
@@ -93,9 +98,10 @@ class Modbus:
         cm = JOG_off_command()
         self.send_command(cm, ':011009000003E3')
 
-    def servo_on(self):
+    def servo_on(self, func=None):
         cm = servo_on_command()
-        self.send_command(cm, cm)
+        command = Command(cm=cm, right_ans=cm, func=func)
+        q.put(command)
 
     def servo_off(self):
         cm = servo_off_command()
