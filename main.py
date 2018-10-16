@@ -375,11 +375,11 @@ class RootWidget(FloatLayout):
         self.buttons_is_disable = val
         myApp.mode_widget.disable_buttons(val)
 
-    def change_motor_state(self, instance, value):
+    def servo_shange_state(self, instance, value):
         if value:
             def check_motor_is_on(*args, **kwargs):
                 ans = kwargs['ans']
-                right_ans = kwargs['right_ans']
+                right_ans = kwargs['right_ans'][:-2]
                 if ans == right_ans:
                     myApp.root_widget.disable_buttons(not value)
             self.motor.servo_on(func=check_motor_is_on)
@@ -437,7 +437,7 @@ class RootWidget(FloatLayout):
         self.com_input.bind(text=self.com_changed)
         self.connect_button.bind(on_press=self.change_connect)
 
-        self.motor_switch.bind(active=self.change_motor_state)
+        self.motor_switch.bind(active=self.servo_shange_state)
         self.motor_switch.disabled = True
 
         self.dropdown = DropDown()
