@@ -87,8 +87,8 @@ class AutoMode(FloatLayout):
             myApp.root_widget.motor.servo_reverse_stop()
 
     def change_reverse(self, instance, value):
-        self.reverse = value
-        self.save_params()
+        self.reverse = myApp.root_widget.reverse = value
+        myApp.root_widget.save_params()
 
     def disable_buttons(self, val):
         self.start_button.disabled = val
@@ -101,6 +101,7 @@ class AutoMode(FloatLayout):
         self.start_button.bind(on_press=self.start_servo_time_work)
         self.stop_button.bind(on_press=self.stop_servo_time_work_btn)
         self.mode_button.bind(on_press=myApp.change_mode)
+        self.reverse_switch.bind(active=self.change_reverse)
         self.reverse_switch.active = self.reverse
 
 class ManualMode(FloatLayout):
@@ -184,6 +185,15 @@ class QuestionPopup(Popup):
         self.ok_button.bind(on_release=self.ok_btn)
         self.cancel_button.bind(on_release=self.dismiss)
 
+class ErrorPopup(Popup):
+    error = ObjectProperty()
+    ok_button = ObjectProperty()
+    def __init__(self, text):
+        super().__init__()
+        self.error.text = text
+        self.ok_button.bind(on_release=self.dismiss)
+        self.open()
+
 class RootWidget(FloatLayout):
     buttons_is_disable = False
 
@@ -214,6 +224,9 @@ class RootWidget(FloatLayout):
     add_preset_button = ObjectProperty()
     del_preset_button = ObjectProperty()
     update_params_button = ObjectProperty()
+
+    def error(self, text):
+        ErrorPopup(text)
 
     def resource_path(self, relative_path):
         print(resource_path(relative_path))
@@ -350,7 +363,7 @@ class RootWidget(FloatLayout):
             self.disconnect()
 
     def connect(self):
-        self.motor.connect(self.com_num)
+        self.motor.connect(self.com_num, myApp)
         if not self.motor.is_connect:
             pass
         else:
@@ -379,7 +392,7 @@ class RootWidget(FloatLayout):
         if value:
             def check_motor_is_on(*args, **kwargs):
                 ans = kwargs['ans']
-                right_ans = kwargs['right_ans'][:-2]
+                right_ans = kwargs['right_ans']
                 if ans == right_ans:
                     myApp.root_widget.disable_buttons(not value)
             self.motor.servo_on(func=check_motor_is_on)

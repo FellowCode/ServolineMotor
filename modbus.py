@@ -27,39 +27,44 @@ class Command:
 class SendCommandThread(Thread):
     work = True
 
-    def __init__(self, ser):
+    def __init__(self, ser, app):
         """Инициализация потока"""
         Thread.__init__(self)
         self.ser = ser
+        self.app = app
 
     def run(self):
         while self.work:
             time.sleep(0.03)
             if q.not_empty:
-                command = q.get()
-                self.ser.write(command.cm.encode('utf-8'))
-                ans = self.ser.read(50).decode('utf-8')[:-2]
-                print(ans)
-                if command.right_ans:
-                    right_ans = command.right_ans[:-2]
-                else:
-                    right_ans = None
-                command.func(ans=ans, right_ans=right_ans, register=command.register)
-                if command.right_ans and command.right_ans[:-2] != ans:
-                    command.error()
-                q.task_done()
+                try:
+                    command = q.get()
+                    self.ser.write(command.cm.encode('utf-8'))
+                    ans = self.ser.read(50).decode('utf-8')[:-2]
+                    print(ans)
+                    if command.right_ans:
+                        right_ans = command.right_ans[:-2]
+                    else:
+                        right_ans = None
+                    command.func(ans=ans, right_ans=right_ans, register=command.register)
+                    if command.right_ans and command.right_ans[:-2] != ans:
+                        command.error()
+                    q.task_done()
+                except:
+                    self.app.root_widget.error('Потеряно соединение с двигателем')
+                    q.empty()
 
 
 class Modbus:
     is_connect = False
 
-    def connect(self, com_num):
+    def connect(self, com_num, app):
         if not self.is_connect:
             try:
                 self.ser = serial.Serial('COM' + str(com_num), 57600, timeout=1, parity=serial.PARITY_ODD)
                 print(self.ser)
                 self.is_connect = True
-                self.command_worker = SendCommandThread(self.ser)
+                self.command_worker = SendCommandThread(self.ser, app)
                 self.command_worker.start()
                 self.JOG_On()
                 if self.is_connect:

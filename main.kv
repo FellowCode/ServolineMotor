@@ -167,8 +167,6 @@
         size_hint: (None, None)
         size: (80, 40)
         pos: (110, window_height - 315)
-        on_active: self.change_reverse
-
 
 <ManualMode>:
     left_button: left_button
@@ -276,10 +274,12 @@
 
 <ErrorPopup@Popup>:
     size_hint: None, None
-    size: 300, 200
+    size: 300, 150
     title: 'Ошибка'
+    error: error
+    ok_button: ok_button
     BoxLayout:
-        orientation: vertical
+        orientation: 'vertical'
         spacing: 5
         AnchorLayout:
             anchor_x: 'center'
@@ -291,8 +291,10 @@
         AnchorLayout:
             anchor_x: 'center'
             anchor_y: 'center'
+            height: 40
             Button:
                 id: ok_button
                 text: 'Ok'
+                size_hint: 0.6, 0.8
 
 
