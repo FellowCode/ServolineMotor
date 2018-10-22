@@ -39,9 +39,10 @@ class SendCommandThread(Thread):
             if q.not_empty:
                 try:
                     command = q.get()
+                    print('send', command.cm[:-2])
                     self.ser.write(command.cm.encode('utf-8'))
                     ans = self.ser.read(50).decode('utf-8')[:-2]
-                    print(ans)
+                    print('get', ans)
                     if command.right_ans:
                         right_ans = command.right_ans[:-2]
                     else:

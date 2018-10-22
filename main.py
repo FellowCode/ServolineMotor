@@ -13,6 +13,8 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 
+#from kivy.modules import keybinding
+from pynput.keyboard import Key, Listener
 
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
@@ -23,6 +25,7 @@ from kivy.uix.image import Image
 from kivy.uix.dropdown import DropDown
 
 from kivy.config import Config
+from kivy.core.window import Window
 
 from kivy.graphics import Color, Rectangle
 from kivy.lang import Builder
@@ -46,9 +49,12 @@ window_width = 400
 
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 Config.set('graphics', 'resizable', 0)
-Config.set('graphics', 'width', window_width)
-Config.set('graphics', 'height', window_height)
 Config.write()
+Window.fullscreen = False
+Window.state = 'visible'
+Window.size = (window_width, window_height)
+
+
 
 class Preset:
     def __init__(self, name, speed, accel_time, deccel_time, work_time):
@@ -131,6 +137,7 @@ class ManualMode(FloatLayout):
         self.left_button.bind(state=self.left_btn_state)
         self.right_button.bind(state=self.right_btn_state)
         self.mode_button.bind(on_press=myApp.change_mode)
+
 
 class ParamInput(TextInput):
     def params_changed(self, instance, value):
@@ -468,6 +475,25 @@ class RootWidget(FloatLayout):
 
 class ServolineMotorApp(App):
     auto_mode = True
+    key_right = 275
+    key_left = 276
+
+    def keyboard_press(self, *args):
+        if not self.auto_mode:
+            key_code = args[1]
+            if key_code == self.key_right and self.mode_widget.left_button.state != 'down':
+                self.mode_widget.right_button.state = 'down'
+            elif key_code == self.key_left and self.mode_widget.right_button.state != 'down':
+                self.mode_widget.left_button.state = 'down'
+
+    def keyboard_release(self, *args):
+        if not self.auto_mode:
+            key_code = args[1]
+            if key_code == self.key_right:
+                self.mode_widget.right_button.state = 'normal'
+            elif key_code == self.key_left:
+                self.mode_widget.left_button.state = 'normal'
+
     def change_mode(self, instance):
         self.auto_mode = not self.auto_mode
         self.root_widget.remove_widget(self.mode_widget)
@@ -493,6 +519,11 @@ class ServolineMotorApp(App):
 
     def on_stop(self):
         self.root_widget.disconnect()
+
+    def __init__(self):
+        super().__init__()
+        Window.bind(on_key_down=self.keyboard_press)
+        Window.bind(on_key_up=self.keyboard_release)
 
 
 myApp = ServolineMotorApp()
