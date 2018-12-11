@@ -30,19 +30,25 @@ from kivy.core.window import Window
 from kivy.graphics import Color, Rectangle
 from kivy.lang import Builder
 
-
+print('app path: ', os.path.join(os.path.abspath("."), ''))
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
+
+        if not os.path.exists(os.path.join(os.path.abspath("."), relative_path)):
+            base_path = sys._MEIPASS
+        else:
+            base_path = os.path.abspath(".")
     except Exception:
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
 
-kv_path = 'main.kv'
-with open(resource_path(kv_path), encoding='utf-8') as f:  # Note the name of the .kv
+
+kv_path = resource_path('main.kv')
+print(kv_path)
+with open(kv_path, encoding='utf-8') as f:  # Note the name of the .kv
     # doesn't match the name of the App
     Builder.load_string(f.read())
 
@@ -56,6 +62,11 @@ Config.set('graphics', 'width', window_width)
 Config.set('graphics', 'height', window_height)
 Config.set('graphics', 'resizable', 0)
 Config.write()
+
+
+appdata_path = os.getenv('APPDATA') + '\\ServolineMotor\\'
+if not os.path.exists(appdata_path):
+    os.makedirs(appdata_path)
 
 
 class Preset:
@@ -105,11 +116,13 @@ class AutoMode(FloatLayout):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        print('start build auto_widget')
         self.start_button.bind(on_press=self.start_servo_time_work)
         self.stop_button.bind(on_press=self.stop_servo_time_work)
         self.mode_button.bind(on_press=myApp.change_mode)
         self.reverse_switch.bind(active=self.change_reverse)
         self.reverse_switch.active = self.reverse
+        print('auto_widget builded')
 
 
 class ManualMode(FloatLayout):
@@ -136,9 +149,11 @@ class ManualMode(FloatLayout):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        print('start build manual_widget')
         self.left_button.bind(state=self.left_btn_state)
         self.right_button.bind(state=self.right_btn_state)
         self.mode_button.bind(on_press=myApp.change_mode)
+        print('manual_widget builded')
 
 
 class ParamInput(TextInput):
@@ -260,7 +275,8 @@ class RootWidget(FloatLayout):
         return resource_path(relative_path)
 
     def save_params(self):
-        with open('settings.txt', 'w') as f:
+
+        with open(appdata_path + 'settings.txt', 'w') as f:
             f.write(str(self.com_num) + '\n')
             f.write(str(self.auto_speed) + '\n')
             f.write(str(self.auto_accel_time) + '\n')
@@ -273,7 +289,7 @@ class RootWidget(FloatLayout):
 
     def load_params(self):
         try:
-            f = open('settings.txt')
+            f = open(appdata_path + 'settings.txt')
             self.com_num = int(f.readline())
             auto_speed = f.readline().strip()
             if auto_speed != '-1':
@@ -297,13 +313,13 @@ class RootWidget(FloatLayout):
             print('load params error')
 
     def save_presets(self):
-        with open('presets.prs', 'wb') as f:
+        with open(appdata_path + 'presets.prs', 'wb') as f:
             presets = [self.auto_presets, self.manual_presets]
             pickle.dump(presets, f)
 
     def load_presets(self):
         try:
-            with open('presets.prs', 'rb') as f:
+            with open(appdata_path + 'presets.prs', 'rb') as f:
                 presets = pickle.load(f)
                 self.auto_presets = presets[0]
                 self.manual_presets = presets[1]
@@ -524,6 +540,7 @@ class RootWidget(FloatLayout):
             pass
         self.load_presets()
         self.com_input.text = str(self.com_num)
+        print('com bind')
         self.com_input.bind(text=self.com_changed)
         self.connect_button.bind(on_press=self.change_connect)
 
@@ -534,6 +551,7 @@ class RootWidget(FloatLayout):
         self.update_presets_dropdown()
         self.preset_button.bind(on_release=self.dropdown.open)
 
+        print('buttons bind')
         self.add_preset_button.bind(on_press=self.add_preset_popup)
         self.del_preset_button.bind(on_press=self.del_preset_btn)
 
@@ -541,6 +559,7 @@ class RootWidget(FloatLayout):
         self.apply_param_button.disabled = True
         self.sync_params_button.bind(on_press=self.servo_sync_params)
         self.sync_params_button.disabled = True
+        print('root_widget builded.')
 
 
 class ServolineMotorApp(App):
@@ -594,11 +613,12 @@ class ServolineMotorApp(App):
         self.mode_widget = ManualMode()
 
     def build(self):
+        print('start build app')
         self.root_widget = RootWidget()
         self.mode_widget = AutoMode()
         self.root_widget.disable_buttons(True)
         self.root_widget.add_widget(self.mode_widget)
-
+        print('app builded.')
         return self.root_widget
 
     def on_stop(self):
