@@ -90,19 +90,21 @@ class AutoMode(FloatLayout):
         self.motor_timer.start()
         self.start_button.disabled = True
         self.reverse_switch.disabled = True
-        if not self.reverse:
-            myApp.root_widget.motor.servo_forward_start()
-        else:
-            myApp.root_widget.motor.servo_reverse_start()
+        # if not self.reverse:
+        #     myApp.root_widget.motor.servo_forward_start()
+        # else:
+        #     myApp.root_widget.motor.servo_reverse_start()
+        myApp.root_widget.motor.servo_reverse_start()
 
     def stop_servo_time_work(self, instance=None):
         self.motor_timer.cancel()
         self.start_button.disabled = False
         self.reverse_switch.disabled = False
-        if not self.reverse:
-            myApp.root_widget.motor.servo_forward_stop()
-        else:
-            myApp.root_widget.motor.servo_reverse_stop()
+        # if not self.reverse:
+        #     myApp.root_widget.motor.servo_forward_stop()
+        # else:
+        #     myApp.root_widget.motor.servo_reverse_stop()
+        myApp.root_widget.motor.servo_reverse_stop()
 
     def change_reverse(self, instance, value):
         self.reverse = myApp.root_widget.reverse = value
