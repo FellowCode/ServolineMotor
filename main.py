@@ -55,6 +55,7 @@ Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 Config.set('graphics', 'width', window_width)
 Config.set('graphics', 'height', window_height)
 Config.set('graphics', 'resizable', 0)
+Config.set('kivy', 'window_icon', resource_path('icon.ico'))
 Config.write()
 
 
@@ -308,7 +309,8 @@ class RootWidget(FloatLayout):
                 self.auto_presets = presets[0]
                 self.manual_presets = presets[1]
         except:
-            pass
+            self.auto_presets = []
+            self.manual_presets = []
 
     def check_param_equals(self):
         if int(self.speed_input.text) != self.speed:
