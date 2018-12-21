@@ -32,6 +32,7 @@ class SendCommandThread(Thread):
         Thread.__init__(self)
         self.ser = ser
         self.app = app
+        self.daemon = True
 
     def run(self):
         while self.work:
@@ -41,7 +42,7 @@ class SendCommandThread(Thread):
                     command = q.get()
                     print('send', command.cm[:-2])
                     self.ser.write(command.cm.encode('utf-8'))
-                    ans = self.ser.read(50).decode('utf-8')[:-2]
+                    ans = self.ser.readline().decode('utf-8')[:-2]
                     print('get ', ans)
                     if command.right_ans:
                         right_ans = command.right_ans[:-2]
