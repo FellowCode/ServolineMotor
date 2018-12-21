@@ -124,7 +124,7 @@ class AutoMode(FloatLayout):
         self.stop_button.bind(on_press=self.stop_servo_time_work)
         self.mode_button.bind(on_press=myApp.change_mode)
         self.reverse_switch.bind(active=self.change_reverse)
-        self.reverse_switch.active = self.reverse
+        self.reverse_switch.active = myApp.root_widget.reverse
         print('auto_widget builded')
 
 
@@ -479,7 +479,7 @@ class RootWidget(FloatLayout):
         self.buttons_is_disable = val
         myApp.mode_widget.disable_buttons(val)
 
-    def servo_shange_state(self, instance, value):
+    def motor_change_state(self, instance, value):
         if value:
             def check_motor_is_on(*args, **kwargs):
                 ans = kwargs['ans']
@@ -548,7 +548,7 @@ class RootWidget(FloatLayout):
         self.com_input.bind(text=self.com_changed)
         self.connect_button.bind(on_press=self.change_connect)
 
-        self.motor_switch.bind(active=self.servo_shange_state)
+        self.motor_switch.bind(active=self.motor_change_state)
         self.motor_switch.disabled = True
 
         self.dropdown = DropDown()
